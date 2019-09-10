@@ -86,8 +86,191 @@ constructor 和 +load 都是在 main 函数执行前调用，但 +load 比 const
 
 #### 2. 编译期写入数据
 
+首先我们定义函数存储的结构体，如下，function 是函数指针，指向我们要写入的函数，key 为附带的信息，后期可以扩展，比如执行优先级，优先级高的函数优先执行。
 
+```
+struct GHW_Function {
+    char *key;
+    void (*function)(void);
+};
+```
+定义函数 GHWStage_A ，里面是需要在 Stage_A 阶段要执行的任务。
 
+```
+static void _GHWStage_A () {
+    printf("ModuleA:Stage_A");
+
+}
+```
+
+将包含函数指针的结构体写入到我们指定的数据区指定的段 __GHW, 指定的节 ___Stage_A，方法如下
+
+```
+__attribute__((used, section("__GHW,__Stage_A"))) \
+static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("Stage_A")), (void *)(&_GHWStage_A)}; \
+```
+
+上面步骤看起来很烦，而且代码晦涩难懂，所以要使用宏来定义一下，如下
+
+```
+#define GHW_FUNCTION_EXPORT(key) \
+static void _GHW##key(void); \
+__attribute__((used, section("__GHW,__"#key""))) \
+static const struct GHW_Function __F##key = (struct GHW_Function){(char *)(&#key), (void *)(&_GHW##key)}; \
+static void _GHW##key \
+```
+
+然后我们将函数写入数据区方式变得很简单了，还是上面的代码，写入指定的段 __GHW, 指定的节 ___Stage_A，方法如下
+
+```
+GHW_FUNCTION_EXPORT(Stage_A)() {
+    printf("ModuleA:Stage_A");
+}
+```
+现在可以非常方便简单了。
+
+将工程打包，然后用 MachOView 打开 Mach-O 文件，可以看出数据写入到相关数据区了，如下
+
+![](resources/4.png)
+
+#### 3. 运行时读出数据
+
+启动项也需要根据所完成的任务被分类，有些启动项是需要刚启动就执行的操作，如 Crash 监控、统计上报等，否则会导致信息收集的缺失；有些启动项需要在较早的时间节点完成，例如一些提供用户信息的 SDK、定位功能的初始化、网络初始化等；有些启动项则可以被延迟执行，如一些自定义配置，一些业务服务的调用、支付 SDK、地图 SDK 等。我们所做的分阶段启动，首先就是把启动流程合理地划分为若干个启动阶段，然后依据每个启动项所做的事情的优先级把它们分配到相应的启动阶段，优先级高的放在靠前的阶段，优先级低的放在靠后的阶段。
+
+如果要覆盖到 main 之前的阶段，之前我们是使用 load 方法，现在使用 ____attribute____ 的 constructor 属性也可以实现这个效果，而且更方便，优势如下
+
+- 所有 Class 都已经加载完成
+- 不用像 load 还得挂在在一个 Class 中
+
+相关代码如下
+
+```
+__attribute__((constructor))
+void premain() {
+    [[GHWExport sharedInstance] executeArrayForKey:@"pre_main"];
+}
+```
+
+表示在 main 之前去获取数据区 pre_main 节的函数指针执行。  
+app willFinish 和 didFinish 阶段也可以执行相关代码，如下
+
+```
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[GHWExport sharedInstance] executeArrayForKey:@"Stage_A"];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [GHWExport.sharedInstance executeArrayForKey:@"Stage_B"];
+}
+```
+
+#### 4. 读出数据注意的地方（use_frameworks!）
+
+实际在读的时候要根据我们 podfile 里面集成方式而有所区别，如果 Podfile 里面有 use_frameworks! 则是动态库集成方式，如果注释掉的话就是静态库的集成方式，静态库集成方式比较好办，因为只有一个主二进制文件，写入的数据区也是写到这个里面，只需要从这一个二进制文件里面读取就可以了。代码如下
+
+```
+void GHWExecuteFunction(char *key, char *appName) {
+    Dl_info info;
+    dladdr((const void *)&GHWExecuteFunction, &info);
+
+    const GHWExportValue mach_header = (GHWExportValue)info.dli_fbase;
+    const GHWExportSection *section = GHWGetSectByNameFromHeader((void *)mach_header, "__GHW", key);
+    if (section == NULL) return;
+
+    int addrOffset = sizeof(struct GHW_Function);
+    for (GHWExportValue addr = section->offset;
+         addr < section->offset + section->size;
+         addr += addrOffset) {
+
+        struct GHW_Function entry = *(struct GHW_Function *)(mach_header + addr);
+        entry.function();
+    }
+}
+```
+
+但是如果是动态库集成的各个组件，那么打成包以后各个组件最后跟主二进制文件是分开的，各个组件写入的数据区跟主二进制不是在一起的，而是写入到自己二进制文件里面相应的数据区，因此我们在读的时候需要遍历所有动态库。我们 App 启动时会加载所有动态库，一共有 569个，其中 83 个是 Podfile 里面集成的，其他都是系统库。这些库的路径也有区别，Podfile 集成进去的库路径类似下面这样
+
+```
+/private/var/containers/Bundle/Application/70C36D61-CD7A-49F7-A690-0C8B3D36C36A/HelloTrip.app/Frameworks/AFNetworking.framework/AFNetworking
+/private/var/containers/Bundle/Application/70C36D61-CD7A-49F7-A690-0C8B3D36C36A/HelloTrip.app/Frameworks/APAddressBook.framework/APAddressBook
+/private/var/containers/Bundle/Application/70C36D61-CD7A-49F7-A690-0C8B3D36C36A/HelloTrip.app/Frameworks/AliyunOSSiOS.framework/AliyunOSSiOS
+```
+
+系统库类似下面这样
+
+```
+/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
+/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
+/usr/lib/libresolv.9.dylib
+```
+因此根据路径里面是否包含 /HelloTrip.app/ 来判断是否 Podfile 集成的库，是的话就去找对应的数据区。
+
+经过多次测试，我们 App 在没有过滤路径情况下遍历动态库上的耗时如下  
+
+0.002198934555053711  
+0.002250075340270996  
+0.003002047538757324  
+0.006783008575439453  
+0.002267003059387207  
+0.003368020057678223  
+0.003902077674865723  
+
+有过滤路径情况下遍历时间如下：
+
+0.0004119873046875  
+0.0007159709930419922  
+0.0004429817199707031  
+0.0004270076751708984  
+0.0004940032958984375  
+0.0004789829254150391  
+0.0004340410232543945  
+0.0004389286041259766  
+
+可见过滤情况下遍历一次所有动态库不到一毫秒，完全可以接受。因此如果 Podfile 中开启了 use_frameworks! ，使用动态库集成方式，那么读取 section 数据具体代码如下
+
+```
+void GHWExecuteFunction(char *key, char *appName) {
+    int num = _dyld_image_count();
+    for (int i = 0; i < num; i++) {
+        const char *name = _dyld_get_image_name(i);
+        if (strstr(name, appName) == NULL) {
+            continue;
+        }
+        const struct mach_header *header = _dyld_get_image_header(i);
+//        printf("%d name: %s\n", i, name);
+
+        Dl_info info;
+        dladdr(header, &info);
+
+        const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
+        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
+        if (section == NULL) continue;
+        int addrOffset = sizeof(struct GHW_Function);
+        for (GHWExportValue addr = section->offset;
+             addr < section->offset + section->size;
+             addr += addrOffset) {
+
+            struct GHW_Function entry = *(struct GHW_Function *)(dliFbase + addr);
+            entry.function();
+        }
+    }
+}
+```
+
+### 五. 总结
+
+在启动流程中，在启动阶段 Stage_A 触发所有注册到 Stage_A 时间节点的启动项，通过对这种方式，几乎没有任何额外的辅助代码，我们用一种很简洁的方式完成了启动项的自注册。如果要查看 Stage_A 阶段的启动项，直接在项目里面搜索即可，方便快捷，不会遗漏。
+
+后续需要确定启动项的添加 & 维护规范，启动项分类原则，优先级和启动阶段，目的是管控性能问题增量，保证优化成果。
+
+## 后记
+
+欢迎提一起探讨技术问题，觉得可以给我点个 star，谢谢。  
+微博：[黑化肥发灰11](https://weibo.com/u/2977255324)   
+简书地址：[https://www.jianshu.com/u/fb5591dbd1bf](https://www.jianshu.com/u/fb5591dbd1bf)  
+掘金地址：[https://juejin.im/user/595b50896fb9a06ba82d14d4](https://juejin.im/user/595b50896fb9a06ba82d14d4)
 
 
 
