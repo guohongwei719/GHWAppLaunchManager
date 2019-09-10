@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_MyDemosVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_MyDemosVersionString[];
+FOUNDATION_EXPORT double Pods_GHWAppLaunchManagerVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_GHWAppLaunchManagerVersionString[];
 

@@ -6,7 +6,7 @@ platform :ios, '11.0'
 inhibit_all_warnings!
 
 
-target 'MyDemos' do
+target 'GHWAppLaunchManager' do
 use_frameworks!
 
  pod 'Masonry',                  '~> 1.1.0'

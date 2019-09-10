@@ -1,13 +1,12 @@
 //
 //  AppDelegate.m
-//  MyDemos
+//  GHWAppLaunchManager
 //
-//  Created by 黑化肥发灰 on 2019/7/25.
+//  Created by 郭宏伟 on 2019/9/10.
 //  Copyright © 2019 Jingyao. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "GHWHomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,16 +15,8 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    return YES;
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    GHWHomeViewController *vc = [[GHWHomeViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    self.window.rootViewController = nav;
-    [self.window makeKeyAndVisible];
+    // Override point for customization after application launch.
     return YES;
 }
 

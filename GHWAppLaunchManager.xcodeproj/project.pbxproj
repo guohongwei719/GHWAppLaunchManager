@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ECF3B80F075C8237DE08312E /* Pods_GHWAppLaunchManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99E9CC6E80CB6238D5DEC32 /* Pods_GHWAppLaunchManager.framework */; };
+		EDA6CBF92327A30800FAFA2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6CBF82327A30800FAFA2D /* AppDelegate.m */; };
+		EDA6CBFC2327A30800FAFA2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6CBFB2327A30800FAFA2D /* ViewController.m */; };
+		EDA6CBFF2327A30800FAFA2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6CBFD2327A30800FAFA2D /* Main.storyboard */; };
+		EDA6CC012327A30900FAFA2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA6CC002327A30900FAFA2D /* Assets.xcassets */; };
+		EDA6CC042327A30900FAFA2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA6CC022327A30900FAFA2D /* LaunchScreen.storyboard */; };
+		EDA6CC072327A30900FAFA2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6CC062327A30900FAFA2D /* main.m */; };
+		EDA6CC0F2327A49A00FAFA2D /* GHWModuleA.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA6CC0D2327A49A00FAFA2D /* GHWModuleA.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		93A8DFF9BA9D58FDCD56DF37 /* Pods-GHWAppLaunchManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHWAppLaunchManager.debug.xcconfig"; path = "Target Support Files/Pods-GHWAppLaunchManager/Pods-GHWAppLaunchManager.debug.xcconfig"; sourceTree = "<group>"; };
+		AE88A156D5409B6CE0B2735D /* Pods-GHWAppLaunchManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GHWAppLaunchManager.release.xcconfig"; path = "Target Support Files/Pods-GHWAppLaunchManager/Pods-GHWAppLaunchManager.release.xcconfig"; sourceTree = "<group>"; };
+		D99E9CC6E80CB6238D5DEC32 /* Pods_GHWAppLaunchManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GHWAppLaunchManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA6CBF42327A30800FAFA2D /* GHWAppLaunchManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHWAppLaunchManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA6CBF72327A30800FAFA2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EDA6CBF82327A30800FAFA2D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EDA6CBFA2327A30800FAFA2D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EDA6CBFB2327A30800FAFA2D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EDA6CBFE2327A30800FAFA2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDA6CC002327A30900FAFA2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDA6CC032327A30900FAFA2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDA6CC052327A30900FAFA2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA6CC062327A30900FAFA2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EDA6CC0D2327A49A00FAFA2D /* GHWModuleA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHWModuleA.m; sourceTree = "<group>"; };
+		EDA6CC0E2327A49A00FAFA2D /* GHWModuleA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHWModuleA.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA6CBF12327A30800FAFA2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF3B80F075C8237DE08312E /* Pods_GHWAppLaunchManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26AA6C29AB5E6F452E0A0A41 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93A8DFF9BA9D58FDCD56DF37 /* Pods-GHWAppLaunchManager.debug.xcconfig */,
+				AE88A156D5409B6CE0B2735D /* Pods-GHWAppLaunchManager.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB56FB06119F07CB1167EF80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D99E9CC6E80CB6238D5DEC32 /* Pods_GHWAppLaunchManager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDA6CBEB2327A30800FAFA2D = {
+			isa = PBXGroup;
+			children = (
+				EDA6CBF62327A30800FAFA2D /* GHWAppLaunchManager */,
+				EDA6CBF52327A30800FAFA2D /* Products */,
+				26AA6C29AB5E6F452E0A0A41 /* Pods */,
+				DB56FB06119F07CB1167EF80 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA6CBF52327A30800FAFA2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6CBF42327A30800FAFA2D /* GHWAppLaunchManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA6CBF62327A30800FAFA2D /* GHWAppLaunchManager */ = {
+			isa = PBXGroup;
+			children = (
+				EDA6CC0E2327A49A00FAFA2D /* GHWModuleA.h */,
+				EDA6CC0D2327A49A00FAFA2D /* GHWModuleA.m */,
+				EDA6CBF72327A30800FAFA2D /* AppDelegate.h */,
+				EDA6CBF82327A30800FAFA2D /* AppDelegate.m */,
+				EDA6CBFA2327A30800FAFA2D /* ViewController.h */,
+				EDA6CBFB2327A30800FAFA2D /* ViewController.m */,
+				EDA6CBFD2327A30800FAFA2D /* Main.storyboard */,
+				EDA6CC002327A30900FAFA2D /* Assets.xcassets */,
+				EDA6CC022327A30900FAFA2D /* LaunchScreen.storyboard */,
+				EDA6CC052327A30900FAFA2D /* Info.plist */,
+				EDA6CC062327A30900FAFA2D /* main.m */,
+			);
+			path = GHWAppLaunchManager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA6CBF32327A30800FAFA2D /* GHWAppLaunchManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA6CC0A2327A30900FAFA2D /* Build configuration list for PBXNativeTarget "GHWAppLaunchManager" */;
+			buildPhases = (
+				ABB9C9804E1C70876B8CB07B /* [CP] Check Pods Manifest.lock */,
+				EDA6CBF02327A30800FAFA2D /* Sources */,
+				EDA6CBF12327A30800FAFA2D /* Frameworks */,
+				EDA6CBF22327A30800FAFA2D /* Resources */,
+				7B9B442475C3C16C42F45424 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GHWAppLaunchManager;
+			productName = GHWAppLaunchManager;
+			productReference = EDA6CBF42327A30800FAFA2D /* GHWAppLaunchManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA6CBEC2327A30800FAFA2D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Jingyao;
+				TargetAttributes = {
+					EDA6CBF32327A30800FAFA2D = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = EDA6CBEF2327A30800FAFA2D /* Build configuration list for PBXProject "GHWAppLaunchManager" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDA6CBEB2327A30800FAFA2D;
+			productRefGroup = EDA6CBF52327A30800FAFA2D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA6CBF32327A30800FAFA2D /* GHWAppLaunchManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA6CBF22327A30800FAFA2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA6CC042327A30900FAFA2D /* LaunchScreen.storyboard in Resources */,
+				EDA6CC012327A30900FAFA2D /* Assets.xcassets in Resources */,
+				EDA6CBFF2327A30800FAFA2D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B9B442475C3C16C42F45424 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GHWAppLaunchManager/Pods-GHWAppLaunchManager-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GHWAppLaunchManager/Pods-GHWAppLaunchManager-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GHWAppLaunchManager/Pods-GHWAppLaunchManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABB9C9804E1C70876B8CB07B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GHWAppLaunchManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA6CBF02327A30800FAFA2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA6CC0F2327A49A00FAFA2D /* GHWModuleA.m in Sources */,
+				EDA6CBFC2327A30800FAFA2D /* ViewController.m in Sources */,
+				EDA6CC072327A30900FAFA2D /* main.m in Sources */,
+				EDA6CBF92327A30800FAFA2D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDA6CBFD2327A30800FAFA2D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA6CBFE2327A30800FAFA2D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDA6CC022327A30900FAFA2D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA6CC032327A30900FAFA2D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDA6CC082327A30900FAFA2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EDA6CC092327A30900FAFA2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDA6CC0B2327A30900FAFA2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93A8DFF9BA9D58FDCD56DF37 /* Pods-GHWAppLaunchManager.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				INFOPLIST_FILE = GHWAppLaunchManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingyao.GHWAppLaunchManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDA6CC0C2327A30900FAFA2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE88A156D5409B6CE0B2735D /* Pods-GHWAppLaunchManager.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2HMG43AYW9;
+				INFOPLIST_FILE = GHWAppLaunchManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingyao.GHWAppLaunchManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA6CBEF2327A30800FAFA2D /* Build configuration list for PBXProject "GHWAppLaunchManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA6CC082327A30900FAFA2D /* Debug */,
+				EDA6CC092327A30900FAFA2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA6CC0A2327A30900FAFA2D /* Build configuration list for PBXNativeTarget "GHWAppLaunchManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA6CC0B2327A30900FAFA2D /* Debug */,
+				EDA6CC0C2327A30900FAFA2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA6CBEC2327A30800FAFA2D /* Project object */;
+}

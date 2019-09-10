@@ -34,20 +34,23 @@ void GHWExecuteFunction(char *key, char *appName) {
 
         Dl_info info;
         dladdr(header, &info);
-        
+
         const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
         const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
         if (section == NULL) continue;
-        
         int addrOffset = sizeof(struct GHW_Function);
         for (GHWExportValue addr = section->offset;
              addr < section->offset + section->size;
              addr += addrOffset) {
-            
+
             struct GHW_Function entry = *(struct GHW_Function *)(dliFbase + addr);
             entry.function();
         }
     }
+    
+    
+    
+    
     
     
 // Podfile 静态库集成方式使用这个方法，不需要遍历加载的每一个动态库，直接想办法读取主 mach-o 二进制文件就行文件，注意修改 dladdr 方法第一个参数
@@ -67,6 +70,11 @@ void GHWExecuteFunction(char *key, char *appName) {
 //        struct GHW_Function entry = *(struct GHW_Function *)(mach_header + addr);
 //        entry.function();
 //    }
+    
+    
+    
+    
+    
     
     // 也可以使用getsectiondata获取到指定的section
     //    unsigned long size;

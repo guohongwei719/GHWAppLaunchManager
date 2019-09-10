@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  MyDemos
+//  GHWAppLaunchManager
 //
-//  Created by 黑化肥发灰 on 2019/7/25.
+//  Created by 郭宏伟 on 2019/9/10.
 //  Copyright © 2019 Jingyao. All rights reserved.
 //
 

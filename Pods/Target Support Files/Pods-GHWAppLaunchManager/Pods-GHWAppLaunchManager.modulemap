@@ -1,0 +1,6 @@
+framework module Pods_GHWAppLaunchManager {
+  umbrella header "Pods-GHWAppLaunchManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
