@@ -1,5 +1,12 @@
 # iOS App 的一种规范启动项执行流程方案
 
+### 目录
+
+[前言](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%89%8D%E8%A8%80)
+[现状](https://github.com/guohongwei719/GHWAppLaunchManager#%E7%8E%B0%E7%8A%B6)
+[优化方案](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88)
+[后记](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%90%8E%E8%AE%B0)
+
 ## 前言
 随着业务的不断发展，我们的 App 启动要做的事情越来越多，启动时间也随之变长，维护成本越来越高，调试不方便，需要一套更好的方案来管理启动项。我们这里说的启动项是指 App 启动过程中需要被完成的某项工作，比如某个 SDK 的初始化、某个功能的预加载等。
 
