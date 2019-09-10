@@ -1,0 +1,6 @@
+framework module GHWPodDemo {
+  umbrella header "GHWPodDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,47 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - GHWAttributeLib (0.1.0):
+    - GHWPodDemo
+  - GHWPodDemo (0.1.0)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - AFNetworking (= 3.2.1)
+  - GHWAttributeLib (from `localPods/GHWAttributeLib/`)
+  - GHWPodDemo (from `localPods/GHWPodDemo/`)
+  - Masonry (~> 1.1.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Masonry
+
+EXTERNAL SOURCES:
+  GHWAttributeLib:
+    :path: localPods/GHWAttributeLib/
+  GHWPodDemo:
+    :path: localPods/GHWPodDemo/
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  GHWAttributeLib: 8fc80eecdca9e22dfd64553926db0f0c32fc2197
+  GHWPodDemo: d46d130785122ffb5fa38c783eb2b1f68dd3768a
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 56c619c12a11b3cbe8429c1647ce2b026c89aab6
+
+COCOAPODS: 1.7.2

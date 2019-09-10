@@ -1,0 +1,6 @@
+framework module GHWAttributeLib {
+  umbrella header "GHWAttributeLib-umbrella.h"
+
+  export *
+  module * { export * }
+}
