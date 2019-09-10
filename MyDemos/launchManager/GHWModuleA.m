@@ -18,6 +18,7 @@
 //    printf("ModuleA:Stage_A");
 //}
 
+
 static void _GHWStage_A(void); \
 __attribute__((used, section("__GHW,__Stage_A"))) \
 static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("Stage_A")), (void *)(&_GHWStage_A)}; \
@@ -27,6 +28,22 @@ static void _GHWStage_A () {
 
 GHW_FUNCTION_EXPORT(Stage_B)() {
     printf("ModuleA:Stage_B\n");
+    [[GHWModuleA sharedInstance] initMudule];
+}
+
+
+
++ (instancetype)sharedInstance {
+    static GHWModuleA *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[GHWModuleA alloc] init];
+    });
+    return instance;
+}
+
+- (void)initMudule {
+    NSLog(@"ModuleA start init ...");
 }
 
 @end

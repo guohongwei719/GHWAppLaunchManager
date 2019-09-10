@@ -9,7 +9,7 @@ inhibit_all_warnings!
 target 'MyDemos' do
 use_frameworks!
 
- pod  'Masonry',                  '~> 1.1.0'
+ pod 'Masonry',                  '~> 1.1.0'
  pod 'GHWPodDemo', :path => 'localPods/GHWPodDemo/'
  pod 'GHWAttributeLib', :path => 'localPods/GHWAttributeLib/'
 
