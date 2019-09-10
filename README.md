@@ -4,6 +4,7 @@
 
 [前言](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%89%8D%E8%A8%80)  
 [现状](https://github.com/guohongwei719/GHWAppLaunchManager#%E7%8E%B0%E7%8A%B6)  
+    [一. 目前的 App 启动项执行流程](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%B8%80-%E7%9B%AE%E5%89%8D%E7%9A%84-app-%E5%90%AF%E5%8A%A8%E9%A1%B9%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B)
 [优化方案](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88)  
 [后记](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%90%8E%E8%AE%B0)
 
