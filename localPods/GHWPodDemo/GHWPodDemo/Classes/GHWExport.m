@@ -93,7 +93,7 @@ void GHWExecuteFunction(char *key, char *appName) {
 }
 
 - (void)executeArrayForKey:(NSString *)key {
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
     NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
     
     NSString *fKey = [NSString stringWithFormat:@"__%@", key?:@""];

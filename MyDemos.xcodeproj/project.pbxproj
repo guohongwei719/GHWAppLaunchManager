@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED1599B7232475EC00DA3EED /* GHWNewExport.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1599B6232475EC00DA3EED /* GHWNewExport.m */; };
 		ED43F96A2308F4DA0044DA50 /* UIDevice+GHW.m in Sources */ = {isa = PBXBuildFile; fileRef = ED43F9682308F4D90044DA50 /* UIDevice+GHW.m */; };
 		ED71923422E999AA00B1A74E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED71923322E999AA00B1A74E /* AppDelegate.m */; };
 		ED71923C22E999AC00B1A74E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED71923B22E999AC00B1A74E /* Assets.xcassets */; };
@@ -29,8 +28,6 @@
 		5811E3D0AAA5AFC7A32C5B4C /* Pods_MyDemos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyDemos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0530AB7F161664F95F55C2 /* Pods-MyDemos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDemos.debug.xcconfig"; path = "Target Support Files/Pods-MyDemos/Pods-MyDemos.debug.xcconfig"; sourceTree = "<group>"; };
 		D12A5835269FCDF23020B4A1 /* Pods-MyDemos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDemos.release.xcconfig"; path = "Target Support Files/Pods-MyDemos/Pods-MyDemos.release.xcconfig"; sourceTree = "<group>"; };
-		ED1599B5232475EC00DA3EED /* GHWNewExport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHWNewExport.h; sourceTree = "<group>"; };
-		ED1599B6232475EC00DA3EED /* GHWNewExport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHWNewExport.m; sourceTree = "<group>"; };
 		ED43F9682308F4D90044DA50 /* UIDevice+GHW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+GHW.m"; sourceTree = "<group>"; };
 		ED43F9692308F4DA0044DA50 /* UIDevice+GHW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+GHW.h"; sourceTree = "<group>"; };
 		ED71922F22E999AA00B1A74E /* MyDemos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDemos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,8 +147,6 @@
 				EDD5447E2303F14900092443 /* GHWAttributeTestObject.m */,
 				EDD544802303F75F00092443 /* GHWAttributeBaseObject.h */,
 				EDD544812303F75F00092443 /* GHWAttributeBaseObject.m */,
-				ED1599B5232475EC00DA3EED /* GHWNewExport.h */,
-				ED1599B6232475EC00DA3EED /* GHWNewExport.m */,
 			);
 			path = launchManager;
 			sourceTree = "<group>";
@@ -272,7 +267,6 @@
 				ED71925122E9AD3700B1A74E /* MyDemos.pch in Sources */,
 				ED71925422E9AE3400B1A74E /* GHWHomeTableViewCell.m in Sources */,
 				EDD5447523029F2300092443 /* GHWModuleB.m in Sources */,
-				ED1599B7232475EC00DA3EED /* GHWNewExport.m in Sources */,
 				EDD5447223029EF400092443 /* GHWModuleA.m in Sources */,
 				EDD544822303F75F00092443 /* GHWAttributeBaseObject.m in Sources */,
 				EDD544792303ECFB00092443 /* GHWAttributeViewController.m in Sources */,

@@ -1,5 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-MyDemos/Pods-MyDemos-frameworks.sh
-${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/GHWAttributeLib/GHWAttributeLib.framework
 ${BUILT_PRODUCTS_DIR}/GHWPodDemo/GHWPodDemo.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
