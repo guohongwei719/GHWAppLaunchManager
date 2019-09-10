@@ -12,6 +12,7 @@
 
 GHW_FUNCTION_EXPORT(pre_main)() {
     printf("ModuleC:pre_main\n");
+    [[GHWModuleC sharedInstance] initMudule];
 }
 
 GHW_FUNCTION_EXPORT(Stage_A)() {
@@ -27,6 +28,19 @@ GHW_FUNCTION_EXPORT(Stage_A)() {
 
 GHW_FUNCTION_EXPORT(Stage_B)() {
     printf("ModuleC:Stage_B\n");
+}
+
++ (instancetype)sharedInstance {
+    static GHWModuleC *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[GHWModuleC alloc] init];
+    });
+    return instance;
+}
+
+- (void)initMudule {
+    NSLog(@"GHWModuleC start init ...");
 }
 
 @end

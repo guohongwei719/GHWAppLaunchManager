@@ -12,10 +12,24 @@
 
 GHW_FUNCTION_EXPORT(Stage_A)() {
     printf("ModuleB:Stage_A\n");
+    [[GHWModuleB sharedInstance] initMudule];
 }
 
 GHW_FUNCTION_EXPORT(Stage_B)() {
     printf("ModuleB:Stage_B\n");
+}
+
++ (instancetype)sharedInstance {
+    static GHWModuleB *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[GHWModuleB alloc] init];
+    });
+    return instance;
+}
+
+- (void)initMudule {
+    NSLog(@"ModuleB start init ...");
 }
 
 @end

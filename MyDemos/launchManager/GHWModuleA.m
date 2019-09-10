@@ -31,8 +31,6 @@ GHW_FUNCTION_EXPORT(Stage_B)() {
     [[GHWModuleA sharedInstance] initMudule];
 }
 
-
-
 + (instancetype)sharedInstance {
     static GHWModuleA *instance = nil;
     static dispatch_once_t onceToken;
