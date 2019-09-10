@@ -58,16 +58,33 @@ Mach-O 的组成结构如上图所示，包含了 Header、Load commands、Data�
 
 ### 四. 技术实现
 
+#### 1. _____attribute_____
 
+Clang 提供了很多的编译函数，它们可以完成不同的功能，其中一项就是 section() 函数，section() 函数提供了二进制段的读写能力，它可以将一些编译期就可以确定的常量写入数据段。在具体的实现中，主要分为编译期和运行时两部分。在编译期，编译器会将标记了  attribute((section())) 的数据写到指定的数据段中，例如写一个{key(key代表不同的启动阶段), *pointer} 对到数据段。到运行时，在合适的时间节点，在根据 key 读取出函数指针，完成函数的调用。
 
+Clang Attributes 是 Clang 提供的一种源码注解，方便开发者向编译器表达某种要求，参与控制如 Static Analyzer、Name Mangling、Code Generation 等过程，一般以 _____attribute______(xxx) 的形式出现在代码中；为方便使用，一些常用属性也被 Cocoa 定义成宏，比如在系统头文件中经常出现的 NS_CLASS_AVAILABLE_IOS(9_0) 就是 _____attribute_____(availability(...)) 这个属性的简单写法。编译器提供了我们一种 _____attribute_____((section("xxx段，xxx节")的方式让我们将一个指定的数据储存到我们需要的节当中。
 
+**used**
 
+used的作用是告诉编译器，我声明的这个符号是需要保留的。被used修饰以后，意味着即使函数没有被引用，在Release下也不会被优化。如果不加这个修饰，那么Release环境链接器会去掉没有被引用的段。
 
+**section**
 
+通常情况下，编译器会将对象放置于DATA段的data或者bss节中。但是，有时我们需要将数据放置于特殊的节中，此时section可以达到目的。
 
+**constructor**
 
+constructor：顾名思义，加上这个属性的函数会在可执行文件（或 shared library）load时被调用，可以理解为在 main() 函数调用前执行。
 
+constructor 和 +load 都是在 main 函数执行前调用，但 +load 比 constructor 更加早一点，因为 dyld（动态链接器，程序的最初起点）在加载 image（可以理解成 Mach-O 文件）时会先通知 objc runtime 去加载其中所有的类，每加载一个类时，它的 +load 随之调用，全部加载完成后，dyld 才会调用这个 image 中所有的 constructor 方法。所以 constructor 是一个干坏事的绝佳时机：
 
+更多相关知识可以参考 
+
+[http://liumh.com/2018/08/18/ios-attribute-section/](http://liumh.com/2018/08/18/ios-attribute-section/)  
+[https://www.jianshu.com/p/965f6f903114](https://www.jianshu.com/p/965f6f903114)  
+[https://nshipster.com/__attribute__/](https://nshipster.com/__attribute__/)
+
+#### 2. 编译期写入数据
 
 
 
