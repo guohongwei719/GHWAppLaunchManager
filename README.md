@@ -5,7 +5,17 @@
 [前言](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%89%8D%E8%A8%80)  
 [现状](https://github.com/guohongwei719/GHWAppLaunchManager#%E7%8E%B0%E7%8A%B6)  
 &nbsp;&nbsp;&nbsp;&nbsp;[一. 目前的 App 启动项执行流程](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%B8%80-%E7%9B%AE%E5%89%8D%E7%9A%84-app-%E5%90%AF%E5%8A%A8%E9%A1%B9%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B)  
+&nbsp;&nbsp;&nbsp;&nbsp;[二. 存在的问题](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BA%8C-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98)  
 [优化方案](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88)  
+&nbsp;&nbsp;&nbsp;&nbsp;[一. demo](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%B8%80-demo)  
+&nbsp;&nbsp;&nbsp;&nbsp;[二. 基本思想](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BA%8C-%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3)  
+&nbsp;&nbsp;&nbsp;&nbsp;[三. 技术原理](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%B8%89-%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86)  
+&nbsp;&nbsp;&nbsp;&nbsp;[四. 技术实现](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%9B%9B-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1. attribute](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%9B%9B-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2. 编译期写入数据](https://github.com/guohongwei719/GHWAppLaunchManager#2-%E7%BC%96%E8%AF%91%E6%9C%9F%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3. 运行时读出数据](https://github.com/guohongwei719/GHWAppLaunchManager#3-%E8%BF%90%E8%A1%8C%E6%97%B6%E8%AF%BB%E5%87%BA%E6%95%B0%E6%8D%AE)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4. 读出数据要注意的地方（use_frameworks!）](https://github.com/guohongwei719/GHWAppLaunchManager#4-%E8%AF%BB%E5%87%BA%E6%95%B0%E6%8D%AE%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9use_frameworks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[五. 总结](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BA%94-%E6%80%BB%E7%BB%93)  
 [后记](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%90%8E%E8%AE%B0)
 
 ## 前言
