@@ -106,12 +106,11 @@ void GHWExecuteFunction(char *key, char *appName) {
     
     NSString *fKey = [NSString stringWithFormat:@"__%@", key?:@""];
     
-    NSDate *date1 = [NSDate date];
+//    NSDate *date1 = [NSDate date];
     GHWExecuteFunction((char *)[fKey UTF8String], (char *)[fullAppName UTF8String]);
-    NSDate *date2 = [NSDate date];
-    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
-    NSLog(@"%@ 个动态库，遍历时间 timeInterval = %@", @(_dyld_image_count()), @(interval));
-    NSLog(@"%@ 个动态库，便利时间 timeInterval = %@", @(_dyld_image_count()), @(interval));
+//    NSDate *date2 = [NSDate date];
+//    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
+//    NSLog(@"%@ 个动态库，遍历时间 timeInterval = %@", @(_dyld_image_count()), @(interval));
 }
 
 - (void)testFail {
