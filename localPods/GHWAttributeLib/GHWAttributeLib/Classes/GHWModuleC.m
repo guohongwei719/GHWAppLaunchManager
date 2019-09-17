@@ -15,14 +15,7 @@ GHW_FUNCTION_EXPORT(pre_main)() {
     [[GHWModuleC sharedInstance] initMudule];
 }
 
-//GHW_FUNCTION_EXPORT(Stage_A)() {
-//    printf("ModuleC:Stage_A\n");
-//}
-
-static void _GHWStage_A(void); \
-__attribute__((used, section("__GHW,__Stage_A"))) \
-static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("Stage_A")), (void *)(&_GHWStage_A)}; \
-static void _GHWStage_A () {
+GHW_FUNCTION_EXPORT(Stage_A)() {
     printf("ModuleC:Stage_A\n");
 }
 
