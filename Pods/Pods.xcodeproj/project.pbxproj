@@ -17,14 +17,15 @@
 		1880D1A725874FF2ECD3F83F84E9A911 /* GHWPodDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6004504438A47CD073EBC212ADF93F4 /* GHWPodDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A52EE608BE66FD955EAC8A6A998C43E /* GHWExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7707F4548B150AB8D5C1D48395EB9A /* GHWExport.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		20C47629AD9EFF6232796690CA4FF6AC /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D9333B00F315696855ADE85C3E6D15 /* MASConstraintMaker.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		20F64ABD5D04EDB446CE7C3226E67EFA /* GHWModuleB.h in Headers */ = {isa = PBXBuildFile; fileRef = D8E97C114C485DB662E92DD10426CACA /* GHWModuleB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22845FB79B4E49BCE306E76947A6CD88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E218020E5CB522728676095B74A1DF89 /* Foundation.framework */; };
 		248D234778D36A89A6170BA3778A2777 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = A17EAC4713F6B85A6124DB11F111B072 /* MASViewConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		280D36330BAC5715615FF4A8B42D60D6 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 86DFFE3C8ABE515058DCF105EB608F37 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C43817529EB28E5896C72C9BE82A2FA /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071ABA9DA4A53122DD0382E7C7F6CBEB /* ViewController+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2F5C2F6A903675A419D158BD0BD8760D /* GHWPodDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE69DB08AAC194442B124086EE8167E1 /* GHWPodDemo.framework */; };
+		2F614FCCB210AB274FDA30F35E408358 /* GHWAttributeLib-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F087EE69249ED9A23D5AE12D785B98F0 /* GHWAttributeLib-dummy.m */; };
 		346080C0D1CA23399ADD739D722D7CEF /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = F05C6EDBC8E4591F89BD9F1E17FBFC97 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DA5F1D8E51CDD102A871C2F37770C7B /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F5718E89E4E5165AA49B980D89CBCF8 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		44EABAA43277C62F0A78E2D3EB0EE997 /* GHWAttributeLib-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E993A7DDD363D1A58A8FB558DA0CF6D1 /* GHWAttributeLib-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B0981F9AC628CF5100C50FF4A163A4A /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 896A4BCB5B3DBC78E1CF6EBF5AC2862F /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		505A0529CDF3A5A2E694D0CE0BA81EDE /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A0F064F168E6660B03C9639A19329 /* View+MASAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		57618E60D7579C624260BEEA4A66BC54 /* GHWExport.h in Headers */ = {isa = PBXBuildFile; fileRef = 97BE512B6D7E38A41B1F982053850B05 /* GHWExport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,16 +39,15 @@
 		93E26DDA3C4CC7BDACDD059969833B74 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E476E5DC364B11085C84F8770A12FD3B /* Masonry-dummy.m */; };
 		941955A19C40899D275604E6E9C21A6D /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 130F3B92BAB28630295F57E8AAC12EA1 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D546E1168C04B0B2EAE005D9275D18B /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = D100F47F5FECCA555C616F7D93D7CB4B /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5545230C8FFABC755C31C0BFF011FD8 /* GHWModuleC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A9931F1FEB48F41529F1CBA916F7AE /* GHWModuleC.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B04AC1D6709D0B609839000ADDDBCC94 /* GHWAttributeLib-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C431FFC147850FC39D3E72859EB31B89 /* GHWAttributeLib-dummy.m */; };
+		CD051C41887802B67724832BCC2DB9D9 /* GHWAttributeLib-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4425E9F271B9CF7A5DC4204C32F16506 /* GHWAttributeLib-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE93C54413259B4AC3683B6EB874D466 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA24BA8F9D9B09171792449F95664EA /* UIKit.framework */; };
 		CFC0DE364E072FB0A0432DDEBC0E45A0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 62890C896C598E9650B511A4A9BA249A /* NSLayoutConstraint+MASDebugAdditions.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D595860314C13E44CA9D048A15D12F4B /* GHWModuleC.h in Headers */ = {isa = PBXBuildFile; fileRef = 973CF1E36D9A914FF370B3AAA99609B8 /* GHWModuleC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D62D938F537BEBABFF332AAA5B0F9B3D /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FADB5EBFADA2A419371CF5E6C927F1E /* MASLayoutConstraint.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E1BB466D2ECD735A7F4567F5D030C8B4 /* Pods-GHWAppLaunchManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AE1283E31E7C796A0D473FCDA0A9915 /* Pods-GHWAppLaunchManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E51F496BDC6ACADE04FDA059C6CB2342 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E218020E5CB522728676095B74A1DF89 /* Foundation.framework */; };
 		E7CA20228B3583F41927813EE904CAD3 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C783239D12541FA278CBEBA15780CE4 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAE8B0895956885A752B173683A0D889 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = B47E0CCE07C313DF7CE5A32C063379DF /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED49860270601CF355755E307B3A54EC /* GHWModuleB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1CEFF3B2A8E543B04D8939C9F648C8 /* GHWModuleB.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EF2BF975F2F10F557C97E59260D7F2CA /* Pods-GHWAppLaunchManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 98311DEE1433A723DA9517043D479EFD /* Pods-GHWAppLaunchManager-dummy.m */; };
 		FAFBFA90F7BC3E7CF50F8A5CF0A8B264 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BCF93F338546FCB058B68A5B6F26B32 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -87,12 +87,11 @@
 		002BF3DDD89C177475702379D618BDA2 /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
 		025EB543E67AF6218FBFEFBEC406E598 /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
 		071ABA9DA4A53122DD0382E7C7F6CBEB /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		0C1CEFF3B2A8E543B04D8939C9F648C8 /* GHWModuleB.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GHWModuleB.m; path = GHWAttributeLib/Classes/GHWModuleB.m; sourceTree = "<group>"; };
 		0DE3657FBE5A032381C25DD02DC06421 /* Pods-GHWAppLaunchManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GHWAppLaunchManager.debug.xcconfig"; sourceTree = "<group>"; };
 		0F5718E89E4E5165AA49B980D89CBCF8 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		115A4EA8F789344C790FEA5CDC507FB7 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
-		121E9E47B9B1CF999720061089C4B3BD /* GHWAttributeLib.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GHWAttributeLib.xcconfig; sourceTree = "<group>"; };
 		130F3B92BAB28630295F57E8AAC12EA1 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		16A9931F1FEB48F41529F1CBA916F7AE /* GHWModuleC.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GHWModuleC.m; path = GHWAttributeLib/Classes/GHWModuleC.m; sourceTree = "<group>"; };
 		1CA24BA8F9D9B09171792449F95664EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1E780607D798BC01DDE3031621C51501 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		1F1BF5683BFFCF57BA0C385B36CC0BE2 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
@@ -103,51 +102,52 @@
 		36D9333B00F315696855ADE85C3E6D15 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		3BCF93F338546FCB058B68A5B6F26B32 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		428E3B515AB262917C36352C5DCD468E /* GHWPodDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GHWPodDemo-dummy.m"; sourceTree = "<group>"; };
+		4425E9F271B9CF7A5DC4204C32F16506 /* GHWAttributeLib-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHWAttributeLib-umbrella.h"; sourceTree = "<group>"; };
 		4AE1283E31E7C796A0D473FCDA0A9915 /* Pods-GHWAppLaunchManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GHWAppLaunchManager-umbrella.h"; sourceTree = "<group>"; };
 		4E5709CED54C3B8DC4B50B19520F6771 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		4F6F1B2E35D8A2F1D17C3B1EF7F5ECD5 /* GHWPodDemo-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHWPodDemo-prefix.pch"; sourceTree = "<group>"; };
+		589255CB8545743E5F1AEEC05B660122 /* GHWAttributeLib.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GHWAttributeLib.xcconfig; sourceTree = "<group>"; };
 		5FADB5EBFADA2A419371CF5E6C927F1E /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		62890C896C598E9650B511A4A9BA249A /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		633076228D952C2032B7C2846E24966F /* GHWPodDemo.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = GHWPodDemo.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		7052273BD3A50204EDC6271DD375F24F /* GHWAttributeLib-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHWAttributeLib-prefix.pch"; sourceTree = "<group>"; };
 		783C5FE83762F28B50C23AD53B98E177 /* Pods-GHWAppLaunchManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GHWAppLaunchManager-Info.plist"; sourceTree = "<group>"; };
 		7BD2B69783311B9512E6A5FF65284EEB /* Pods-GHWAppLaunchManager-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GHWAppLaunchManager-frameworks.sh"; sourceTree = "<group>"; };
 		86DFFE3C8ABE515058DCF105EB608F37 /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
 		870570EFE09B8657023DC7C42C33BE4B /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Masonry.modulemap; sourceTree = "<group>"; };
+		890695D0B058804BDE61719CA3E9E0B4 /* GHWAttributeLib.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = GHWAttributeLib.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		896A4BCB5B3DBC78E1CF6EBF5AC2862F /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		8A02A3BF3486C8B4C146B8ECF3F48057 /* Pods-GHWAppLaunchManager-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GHWAppLaunchManager-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8D4CA7B92265A15B80B1666634FF46C0 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
 		9602790FE4AD5AFB0C26D648BA563DC3 /* Pods-GHWAppLaunchManager-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GHWAppLaunchManager-acknowledgements.plist"; sourceTree = "<group>"; };
-		973CF1E36D9A914FF370B3AAA99609B8 /* GHWModuleC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GHWModuleC.h; path = GHWAttributeLib/Classes/GHWModuleC.h; sourceTree = "<group>"; };
 		97BE512B6D7E38A41B1F982053850B05 /* GHWExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GHWExport.h; path = GHWPodDemo/Classes/GHWExport.h; sourceTree = "<group>"; };
 		98311DEE1433A723DA9517043D479EFD /* Pods-GHWAppLaunchManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GHWAppLaunchManager-dummy.m"; sourceTree = "<group>"; };
 		9C00590F8454EC5AAE8EEB41B18B0B7E /* Pods-GHWAppLaunchManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GHWAppLaunchManager.release.xcconfig"; sourceTree = "<group>"; };
 		9C783239D12541FA278CBEBA15780CE4 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		9CD1AD2192C246BE568B6CFBA7EB9C68 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		9D3762DAD87D70DD400314B797208244 /* GHWAttributeLib.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GHWAttributeLib.modulemap; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A17EAC4713F6B85A6124DB11F111B072 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		ACB7B80D58CFA003C25B538A405A341D /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
 		AE69DB08AAC194442B124086EE8167E1 /* GHWPodDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GHWPodDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF27E81EC988832E1B91DFAA9D0D08B9 /* Pods-GHWAppLaunchManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GHWAppLaunchManager.modulemap"; sourceTree = "<group>"; };
+		B2F59D7BD7374C68DB831C4C3241DE3F /* GHWAttributeLib-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHWAttributeLib-prefix.pch"; sourceTree = "<group>"; };
 		B377289AFAE7DF9945B981F14B4AF95C /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		B47E0CCE07C313DF7CE5A32C063379DF /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
 		B9877CE792A87E3CA08D22741537C3DE /* GHWPodDemo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GHWPodDemo.xcconfig; sourceTree = "<group>"; };
-		C431FFC147850FC39D3E72859EB31B89 /* GHWAttributeLib-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GHWAttributeLib-dummy.m"; sourceTree = "<group>"; };
+		BD5D2F470D2FBBB078D29FA49F7013F3 /* GHWAttributeLib-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GHWAttributeLib-Info.plist"; sourceTree = "<group>"; };
+		C127C8DECFD78D23A0C5BD54CB39C76C /* GHWAttributeLib.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GHWAttributeLib.modulemap; sourceTree = "<group>"; };
 		C6004504438A47CD073EBC212ADF93F4 /* GHWPodDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHWPodDemo-umbrella.h"; sourceTree = "<group>"; };
 		C6BB2E40FA7314FFFF244B2FD839A658 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
 		D100F47F5FECCA555C616F7D93D7CB4B /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		D2161468547EEA9F37EB9919C0AF9CF3 /* GHWPodDemo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GHWPodDemo-Info.plist"; sourceTree = "<group>"; };
 		D4A7DE2DEE1EC431E3E1DD1BD5790E7B /* GHWPodDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GHWPodDemo.modulemap; sourceTree = "<group>"; };
+		D8E97C114C485DB662E92DD10426CACA /* GHWModuleB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GHWModuleB.h; path = GHWAttributeLib/Classes/GHWModuleB.h; sourceTree = "<group>"; };
 		DF48D82622C6D1FFAC5752C7BB004472 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		E218020E5CB522728676095B74A1DF89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E2AAC909E81D49656442BE8255D803A4 /* GHWAttributeLib.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = GHWAttributeLib.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E3A183E6230CA5BAACCA5D1B12B538CF /* GHWAttributeLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GHWAttributeLib.framework; path = GHWAttributeLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E476E5DC364B11085C84F8770A12FD3B /* Masonry-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
 		E6225045F2DF7AF603D15E0A59933930 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		E8CA9A973199EBFAE2BF2335D4B85561 /* GHWAttributeLib-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GHWAttributeLib-Info.plist"; sourceTree = "<group>"; };
-		E993A7DDD363D1A58A8FB558DA0CF6D1 /* GHWAttributeLib-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GHWAttributeLib-umbrella.h"; sourceTree = "<group>"; };
 		F05C6EDBC8E4591F89BD9F1E17FBFC97 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
+		F087EE69249ED9A23D5AE12D785B98F0 /* GHWAttributeLib-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GHWAttributeLib-dummy.m"; sourceTree = "<group>"; };
 		F20A7188ABF123273A3C22C4340688AC /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		FE7A0F064F168E6660B03C9639A19329 /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,20 +190,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		252323E4565E3E2C50917359C605B8A0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9D3762DAD87D70DD400314B797208244 /* GHWAttributeLib.modulemap */,
-				121E9E47B9B1CF999720061089C4B3BD /* GHWAttributeLib.xcconfig */,
-				C431FFC147850FC39D3E72859EB31B89 /* GHWAttributeLib-dummy.m */,
-				E8CA9A973199EBFAE2BF2335D4B85561 /* GHWAttributeLib-Info.plist */,
-				7052273BD3A50204EDC6271DD375F24F /* GHWAttributeLib-prefix.pch */,
-				E993A7DDD363D1A58A8FB558DA0CF6D1 /* GHWAttributeLib-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../../Pods/Target Support Files/GHWAttributeLib";
-			sourceTree = "<group>";
-		};
 		2775FC480BCAE8A7AF40C8E16B7A3099 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,26 +221,6 @@
 			path = "../../Pods/Target Support Files/GHWPodDemo";
 			sourceTree = "<group>";
 		};
-		36A233E1D15CE7F42834173741465400 /* GHWAttributeLib */ = {
-			isa = PBXGroup;
-			children = (
-				973CF1E36D9A914FF370B3AAA99609B8 /* GHWModuleC.h */,
-				16A9931F1FEB48F41529F1CBA916F7AE /* GHWModuleC.m */,
-				39C78B33354F16F5DB21EE12475EECF7 /* Pod */,
-				252323E4565E3E2C50917359C605B8A0 /* Support Files */,
-			);
-			name = GHWAttributeLib;
-			path = ../localPods/GHWAttributeLib;
-			sourceTree = "<group>";
-		};
-		39C78B33354F16F5DB21EE12475EECF7 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				E2AAC909E81D49656442BE8255D803A4 /* GHWAttributeLib.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		3A490BCB7E8D49558F776807DE498296 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +233,7 @@
 		63DFBA448278B6D2E919425EBC8AA585 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				36A233E1D15CE7F42834173741465400 /* GHWAttributeLib */,
+				C76797D0626097FF74B9E0F4522A06AF /* GHWAttributeLib */,
 				81340AF8EEDCA999A3BED8CB6EF448BA /* GHWPodDemo */,
 			);
 			name = "Development Pods";
@@ -315,6 +281,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7D653F4BFCA79F0E7FC6D96FB50150B5 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				890695D0B058804BDE61719CA3E9E0B4 /* GHWAttributeLib.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		81340AF8EEDCA999A3BED8CB6EF448BA /* GHWPodDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +318,20 @@
 			path = "Target Support Files/Pods-GHWAppLaunchManager";
 			sourceTree = "<group>";
 		};
+		BC011F5C2F4C728A008970D2C4E3C843 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C127C8DECFD78D23A0C5BD54CB39C76C /* GHWAttributeLib.modulemap */,
+				589255CB8545743E5F1AEEC05B660122 /* GHWAttributeLib.xcconfig */,
+				F087EE69249ED9A23D5AE12D785B98F0 /* GHWAttributeLib-dummy.m */,
+				BD5D2F470D2FBBB078D29FA49F7013F3 /* GHWAttributeLib-Info.plist */,
+				B2F59D7BD7374C68DB831C4C3241DE3F /* GHWAttributeLib-prefix.pch */,
+				4425E9F271B9CF7A5DC4204C32F16506 /* GHWAttributeLib-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../../Pods/Target Support Files/GHWAttributeLib";
+			sourceTree = "<group>";
+		};
 		BDFB34A12FABD70C59DCE49920774B47 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -369,6 +357,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C76797D0626097FF74B9E0F4522A06AF /* GHWAttributeLib */ = {
+			isa = PBXGroup;
+			children = (
+				D8E97C114C485DB662E92DD10426CACA /* GHWModuleB.h */,
+				0C1CEFF3B2A8E543B04D8939C9F648C8 /* GHWModuleB.m */,
+				7D653F4BFCA79F0E7FC6D96FB50150B5 /* Pod */,
+				BC011F5C2F4C728A008970D2C4E3C843 /* Support Files */,
+			);
+			name = GHWAttributeLib;
+			path = ../localPods/GHWAttributeLib;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
@@ -392,20 +392,20 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		1638C91DEB232DFCC8ADBA1F768C1E37 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD051C41887802B67724832BCC2DB9D9 /* GHWAttributeLib-umbrella.h in Headers */,
+				20F64ABD5D04EDB446CE7C3226E67EFA /* GHWModuleB.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F3D1C1F7E2D36D98EF52289D270A91A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E1BB466D2ECD735A7F4567F5D030C8B4 /* Pods-GHWAppLaunchManager-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6D7753DED3E670DE17DF686C0E217689 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44EABAA43277C62F0A78E2D3EB0EE997 /* GHWAttributeLib-umbrella.h in Headers */,
-				D595860314C13E44CA9D048A15D12F4B /* GHWModuleC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,8 +466,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2F7B89313E66699A289A5C884787518 /* Build configuration list for PBXNativeTarget "GHWAttributeLib" */;
 			buildPhases = (
-				6D7753DED3E670DE17DF686C0E217689 /* Headers */,
-				AB991F5BB0EAC9F8F07A92300C9C3D23 /* Sources */,
+				1638C91DEB232DFCC8ADBA1F768C1E37 /* Headers */,
+				F728CBBF7FF9B4FC0170905BE6C6CCB0 /* Sources */,
 				A33F8F0203FA3B311C09D629A8F28D8F /* Frameworks */,
 				AF497053960CC7CF6B72E37A21BC4002 /* Resources */,
 			);
@@ -616,12 +616,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AB991F5BB0EAC9F8F07A92300C9C3D23 /* Sources */ = {
+		F728CBBF7FF9B4FC0170905BE6C6CCB0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04AC1D6709D0B609839000ADDDBCC94 /* GHWAttributeLib-dummy.m in Sources */,
-				A5545230C8FFABC755C31C0BFF011FD8 /* GHWModuleC.m in Sources */,
+				2F614FCCB210AB274FDA30F35E408358 /* GHWAttributeLib-dummy.m in Sources */,
+				ED49860270601CF355755E307B3A54EC /* GHWModuleB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,7 +996,7 @@
 		};
 		F10468C5BDCAF68F9B7EBDDE2FAB61C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 121E9E47B9B1CF999720061089C4B3BD /* GHWAttributeLib.xcconfig */;
+			baseConfigurationReference = 589255CB8545743E5F1AEEC05B660122 /* GHWAttributeLib.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1030,7 +1030,7 @@
 		};
 		FD7E410C6083F458B55DB223DDF9592E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 121E9E47B9B1CF999720061089C4B3BD /* GHWAttributeLib.xcconfig */;
+			baseConfigurationReference = 589255CB8545743E5F1AEEC05B660122 /* GHWAttributeLib.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

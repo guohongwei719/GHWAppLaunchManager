@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "GHWModuleC.h"
+#import "GHWModuleB.h"
 
 FOUNDATION_EXPORT double GHWAttributeLibVersionNumber;
 FOUNDATION_EXPORT const unsigned char GHWAttributeLibVersionString[];

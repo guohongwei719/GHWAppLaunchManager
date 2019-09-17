@@ -6,34 +6,34 @@
 //  Copyright © 2019 黑化肥发灰. All rights reserved.
 //
 
-#import "GHWModuleC.h"
+#import "GHWModuleB.h"
 #import <GHWPodDemo/GHWExport.h>
-@implementation GHWModuleC
+@implementation GHWModuleB
 
 GHW_FUNCTION_EXPORT(pre_main)() {
-    printf("ModuleC:pre_main\n");
-    [[GHWModuleC sharedInstance] initMudule];
+    printf("ModuleB:pre_main\n");
+    [[GHWModuleB sharedInstance] initMudule];
 }
 
 GHW_FUNCTION_EXPORT(Stage_A)() {
-    printf("ModuleC:Stage_A\n");
+    printf("ModuleB:Stage_A\n");
 }
 
 GHW_FUNCTION_EXPORT(Stage_B)() {
-    printf("ModuleC:Stage_B\n");
+    printf("ModuleB:Stage_B\n");
 }
 
 + (instancetype)sharedInstance {
-    static GHWModuleC *instance = nil;
+    static GHWModuleB *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[GHWModuleC alloc] init];
+        instance = [[GHWModuleB alloc] init];
     });
     return instance;
 }
 
 - (void)initMudule {
-    NSLog(@"GHWModuleC start init ...");
+    NSLog(@"GHWModuleB start init ...");
 }
 
 @end

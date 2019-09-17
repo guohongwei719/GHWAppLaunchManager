@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GHWModuleC : NSObject
+@interface GHWModuleB : NSObject
 
 + (instancetype)sharedInstance;
 
