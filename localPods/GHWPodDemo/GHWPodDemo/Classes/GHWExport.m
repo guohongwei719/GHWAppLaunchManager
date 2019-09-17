@@ -58,8 +58,8 @@ void GHWExecuteFunction(char *key, char *appName) {
 //    Dl_info info;
 //    dladdr((const void *)&GHWExecuteFunction, &info);
 //
-//    const GHWExportValue mach_header = (GHWExportValue)info.dli_fbase;
-//    const GHWExportSection *section = GHWGetSectByNameFromHeader((void *)mach_header, "__GHW", key);
+//    const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
+//    const GHWExportSection *section = GHWGetSectByNameFromHeader((void *)dliFbase, "__GHW", key);
 //    if (section == NULL) return;
 //
 //    int addrOffset = sizeof(struct GHW_Function);
@@ -67,7 +67,7 @@ void GHWExecuteFunction(char *key, char *appName) {
 //         addr < section->offset + section->size;
 //         addr += addrOffset) {
 //
-//        struct GHW_Function entry = *(struct GHW_Function *)(mach_header + addr);
+//        struct GHW_Function entry = *(struct GHW_Function *)(dliFbase + addr);
 //        entry.function();
 //    }
     

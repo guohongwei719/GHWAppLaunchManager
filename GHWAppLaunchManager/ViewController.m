@@ -36,6 +36,7 @@ void premain() {
     [super viewWillAppear:animated];
 
 //    NSDate *date1 = [NSDate date];
+    NSLog(@"\n\n------------------------  Stage_A start ------------------------\n\n");
     [[GHWExport sharedInstance] executeArrayForKey:@"Stage_A"];
 //    NSDate *date2 = [NSDate date];
 //    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
@@ -47,6 +48,7 @@ void premain() {
     [super viewDidAppear:animated];
     
 //    NSDate *date1 = [NSDate date];
+    NSLog(@"\n\n------------------------  Stage_B start ------------------------\n\n");
     [[GHWExport sharedInstance] executeArrayForKey:@"Stage_B"];
 //    NSDate *date2 = [NSDate date];
 //    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
