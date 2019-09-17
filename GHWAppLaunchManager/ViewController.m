@@ -9,13 +9,11 @@
 #import "ViewController.h"
 #import <GHWPodDemo/GHWExport.h>
 
-void printTestString(NSString **string){
-    NSLog(@" 打印信息string:%@",*string);
-}
-
 __attribute__((constructor))
 void premain() {
-    [[GHWExport sharedInstance] executeArrayForKey:@"pre_main"];
+    NSLog(@"\n\n------------------------  Pre_main start ------------------------\n\n");
+
+    [[GHWExport sharedInstance] executeArrayForKey:@"Pre_main"];
 }
 
 @interface ViewController ()

@@ -10,8 +10,8 @@
 #import <GHWPodDemo/GHWExport.h>
 @implementation GHWModuleB
 
-GHW_FUNCTION_EXPORT(pre_main)() {
-    printf("ModuleB:pre_main\n");
+GHW_FUNCTION_EXPORT(Pre_main)() {
+    printf("ModuleB:Pre_main\n");
     [[GHWModuleB sharedInstance] initMudule];
 }
 
