@@ -85,10 +85,10 @@
 		EDA6CBF62327A30800FAFA2D /* GHWAppLaunchManager */ = {
 			isa = PBXGroup;
 			children = (
-				EDA6CC0E2327A49A00FAFA2D /* GHWModuleA.h */,
-				EDA6CC0D2327A49A00FAFA2D /* GHWModuleA.m */,
 				EDA6CBF72327A30800FAFA2D /* AppDelegate.h */,
 				EDA6CBF82327A30800FAFA2D /* AppDelegate.m */,
+				EDA6CC0E2327A49A00FAFA2D /* GHWModuleA.h */,
+				EDA6CC0D2327A49A00FAFA2D /* GHWModuleA.m */,
 				EDA6CBFA2327A30800FAFA2D /* ViewController.h */,
 				EDA6CBFB2327A30800FAFA2D /* ViewController.m */,
 				EDA6CBFD2327A30800FAFA2D /* Main.storyboard */,
