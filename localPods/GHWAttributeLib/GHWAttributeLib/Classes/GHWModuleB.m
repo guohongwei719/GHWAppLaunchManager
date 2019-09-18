@@ -7,7 +7,7 @@
 //
 
 #import "GHWModuleB.h"
-#import <GHWPodDemo/GHWExport.h>
+#import <GHWPodDemo/GHWLaunchManager.h>
 @implementation GHWModuleB
 
 GHW_FUNCTION_EXPORT(Pre_main)() {

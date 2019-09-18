@@ -1,4 +1,4 @@
-#import "GHWExport.h"
+#import "GHWLaunchManager.h"
 
 #import <dlfcn.h>
 #import <objc/runtime.h>
@@ -86,16 +86,16 @@ void GHWExecuteFunction(char *key, char *appName) {
 }
 
 
-@interface GHWExport ()
+@interface GHWLaunchManager ()
 @end
 
-@implementation GHWExport
+@implementation GHWLaunchManager
 
 + (instancetype)sharedInstance {
-    static GHWExport *singleTon;
+    static GHWLaunchManager *singleTon;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        singleTon = GHWExport.new;
+        singleTon = GHWLaunchManager.new;
     });
     return singleTon;
 }

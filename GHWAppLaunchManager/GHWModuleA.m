@@ -7,7 +7,7 @@
 //
 
 #import "GHWModuleA.h"
-#import <GHWPodDemo/GHWExport.h>
+#import <GHWPodDemo/GHWLaunchManager.h>
 
 @implementation GHWModuleA
 

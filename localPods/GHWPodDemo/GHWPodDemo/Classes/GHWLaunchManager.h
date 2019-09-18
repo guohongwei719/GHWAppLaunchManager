@@ -13,7 +13,7 @@ __attribute__((used, section("__GHW,__"#key""))) \
 static const struct GHW_Function __F##key = (struct GHW_Function){(char *)(&#key), (void *)(&_GHW##key)}; \
 static void _GHW##key \
 
-@interface GHWExport : NSObject
+@interface GHWLaunchManager : NSObject
 
 + (instancetype)sharedInstance;
 
