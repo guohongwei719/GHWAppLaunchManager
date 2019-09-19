@@ -185,29 +185,7 @@ app willFinish 和 didFinish 阶段也可以执行相关代码，如下
 
 #### 4. 读出数据要注意的地方（use_frameworks!）
 
-实际在读的时候要根据我们 podfile 里面集成方式而有所区别，如果 Podfile 里面有 use_frameworks! 则是动态库集成方式，如果注释掉的话就是静态库的集成方式，静态库集成方式比较好办，因为只有一个主二进制文件，写入的数据区也是写到这个里面，只需要从这一个二进制文件里面读取就可以了。代码如下
-
-```
-void GHWExecuteFunction(char *key, char *appName) {
-    Dl_info info;
-    dladdr((const void *)&GHWExecuteFunction, &info);
-
-    const GHWExportValue mach_header = (GHWExportValue)info.dli_fbase;
-    const GHWExportSection *section = GHWGetSectByNameFromHeader((void *)mach_header, "__GHW", key);
-    if (section == NULL) return;
-
-    int addrOffset = sizeof(struct GHW_Function);
-    for (GHWExportValue addr = section->offset;
-         addr < section->offset + section->size;
-         addr += addrOffset) {
-
-        struct GHW_Function entry = *(struct GHW_Function *)(mach_header + addr);
-        entry.function();
-    }
-}
-```
-
-但是如果是动态库集成的各个组件，那么打成包以后各个组件最后跟主二进制文件是分开的，各个组件写入的数据区跟主二进制不是在一起的，而是写入到自己二进制文件里面相应的数据区，因此我们在读的时候需要遍历所有动态库。我们 App 启动时会加载所有动态库，一共有 569个，其中 83 个是 Podfile 里面集成的，其他都是系统库。这些库的路径也有区别，Podfile 集成进去的库路径类似下面这样
+实际在读的时候要根据我们 podfile 里面集成方式而有所区别，如果 Podfile 里面有 use_frameworks! 则是动态库集成方式，如果注释掉的话就是静态库的集成方式，静态库集成方式比较好办，因为只有一个主二进制文件，写入的数据区也是写到这个里面，只需要从这一个二进制文件里面读取就可以了。但是如果是动态库集成的各个组件，那么打成包以后各个组件最后跟主二进制文件是分开的，各个组件写入的数据区跟主二进制不是在一起的，而是写入到自己二进制文件里面相应的数据区，因此我们在读的时候需要遍历所有动态库。我们 App 启动时会加载所有动态库，一共有 569个，其中 83 个是 Podfile 里面集成的，其他都是系统库。这些库的路径也有区别，Podfile 集成进去的库路径类似下面这样
 
 ```
 /private/var/containers/Bundle/Application/70C36D61-CD7A-49F7-A690-0C8B3D36C36A/HelloTrip.app/Frameworks/AFNetworking.framework/AFNetworking
@@ -249,19 +227,22 @@ void GHWExecuteFunction(char *key, char *appName) {
 可见过滤情况下遍历一次所有动态库不到一毫秒，完全可以接受。因此如果 Podfile 中开启了 use_frameworks! ，使用动态库集成方式，那么读取 section 数据具体代码如下
 
 ```
-void GHWExecuteFunction(char *key, char *appName) {
+static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char *appName) {
+    NSMutableArray<GHWModuleMetaDataModel *> * result = [[NSMutableArray alloc] init];
+
     int num = _dyld_image_count();
     for (int i = 0; i < num; i++) {
         const char *name = _dyld_get_image_name(i);
         if (strstr(name, appName) == NULL) {
             continue;
         }
+        
         const struct mach_header *header = _dyld_get_image_header(i);
-//        printf("%d name: %s\n", i, name);
-
+        //        printf("%d name: %s\n", i, name);
+        
         Dl_info info;
         dladdr(header, &info);
-
+        
         const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
         const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
         if (section == NULL) continue;
@@ -269,12 +250,18 @@ void GHWExecuteFunction(char *key, char *appName) {
         for (GHWExportValue addr = section->offset;
              addr < section->offset + section->size;
              addr += addrOffset) {
-
+            
             struct GHW_Function entry = *(struct GHW_Function *)(dliFbase + addr);
-            entry.function();
+            GHWModuleMetaDataModel * metaData = [[GHWModuleMetaDataModel alloc] init];
+            metaData.priority = entry.priority;
+            metaData.imp = entry.function;
+            metaData.info = [NSString stringWithCString:entry.key encoding:NSUTF8StringEncoding];
+            [result addObject:metaData];
         }
     }
+    return [result mutableCopy];
 }
+
 ```
 
 ### 五. 总结
