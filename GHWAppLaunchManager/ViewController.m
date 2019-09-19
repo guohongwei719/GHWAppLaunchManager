@@ -9,13 +9,6 @@
 #import "ViewController.h"
 #import <GHWPodDemo/GHWLaunchManager.h>
 
-__attribute__((constructor))
-void premain() {
-    NSLog(@"\n\n------------------------  Pre_main start ------------------------\n\n");
-
-    [[GHWLaunchManager sharedInstance] executeArrayForKey:@"Pre_main"];
-}
-
 @interface ViewController ()
 
 @end

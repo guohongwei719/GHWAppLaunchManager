@@ -10,16 +10,16 @@
 #import <GHWPodDemo/GHWLaunchManager.h>
 @implementation GHWModuleB
 
-GHW_FUNCTION_EXPORT(Pre_main)() {
+GHW_FUNCTION_EXPORT(Pre_main, kGHWLauncherPriorityHigh)() {
     printf("ModuleB:Pre_main\n");
     [[GHWModuleB sharedInstance] initMudule];
 }
 
-GHW_FUNCTION_EXPORT(Stage_A)() {
+GHW_FUNCTION_EXPORT(Stage_A, kGHWLauncherPriorityDefault)() {
     printf("ModuleB:Stage_A\n");
 }
 
-GHW_FUNCTION_EXPORT(Stage_B)() {
+GHW_FUNCTION_EXPORT(Stage_B, kGHWLauncherPriorityHigh)() {
     printf("ModuleB:Stage_B\n");
 }
 

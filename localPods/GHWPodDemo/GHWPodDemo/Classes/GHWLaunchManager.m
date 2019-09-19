@@ -19,6 +19,21 @@ typedef struct section GHWExportSection;
 
 #pragma mark -
 
+
+
+@interface GHWModuleMetaDataModel : NSObject
+
+@property (nonatomic, assign) NSInteger priority;
+@property (nonatomic, strong) NSString *info;
+@property (nonatomic, assign) IMP imp;
+
+@end
+
+@implementation GHWModuleMetaDataModel
+
+
+@end
+
 void GHWExecuteFunction(char *key, char *appName) {
     // Podfile 动态库集成方式使用这个方法，遍历加载的每一个动态库，去里面找自定义的 section
 
@@ -45,6 +60,7 @@ void GHWExecuteFunction(char *key, char *appName) {
 
             struct GHW_Function entry = *(struct GHW_Function *)(dliFbase + addr);
             entry.function();
+
         }
     }
     
@@ -86,7 +102,72 @@ void GHWExecuteFunction(char *key, char *appName) {
 }
 
 
+
+
+static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char *appName) {
+    NSMutableArray<GHWModuleMetaDataModel *> * result = [[NSMutableArray alloc] init];
+
+    int num = _dyld_image_count();
+    for (int i = 0; i < num; i++) {
+        const char *name = _dyld_get_image_name(i);
+        if (strstr(name, appName) == NULL) {
+            continue;
+        }
+        
+        const struct mach_header *header = _dyld_get_image_header(i);
+        //        printf("%d name: %s\n", i, name);
+        
+        Dl_info info;
+        dladdr(header, &info);
+        
+        const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
+        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
+        if (section == NULL) continue;
+        int addrOffset = sizeof(struct GHW_Function);
+        for (GHWExportValue addr = section->offset;
+             addr < section->offset + section->size;
+             addr += addrOffset) {
+            
+            struct GHW_Function entry = *(struct GHW_Function *)(dliFbase + addr);
+            GHWModuleMetaDataModel * metaData = [[GHWModuleMetaDataModel alloc] init];
+            metaData.priority = entry.priority;
+            metaData.imp = entry.function;
+            metaData.info = [NSString stringWithCString:entry.key encoding:NSUTF8StringEncoding];
+            [result addObject:metaData];
+        }
+    }
+    
+    return [result mutableCopy];
+
+}
+
+
+__attribute__((constructor))
+void premain() {
+    NSLog(@"\n\n------------------------  Pre_main start ------------------------\n\n");
+
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
+    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
+    
+    NSString *preMainKey = [NSString stringWithFormat:@"__%@", kGHWLauncherStagePreMain];
+    NSMutableArray *arrayPreMain = modulesInDyld((char *)[preMainKey UTF8String], (char *)[fullAppName UTF8String]);
+    
+    [[GHWLaunchManager sharedInstance].moduleDic setObject:arrayPreMain forKey:kGHWLauncherStagePreMain];
+    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
+    
+    NSString *stageAKey = [NSString stringWithFormat:@"__%@", kGHWLauncherStageA];
+    NSMutableArray *arrayStageA = modulesInDyld((char *)[stageAKey UTF8String], (char *)[fullAppName UTF8String]);
+    [[GHWLaunchManager sharedInstance].moduleDic setObject:arrayStageA forKey:kGHWLauncherStageA];
+    
+    NSString *stageBKey = [NSString stringWithFormat:@"__%@", kGHWLauncherStageB];
+    NSMutableArray *arrayStageB = modulesInDyld((char *)[stageBKey UTF8String], (char *)[fullAppName UTF8String]);
+    [[GHWLaunchManager sharedInstance].moduleDic setObject:arrayStageB forKey:kGHWLauncherStageB];
+    
+}
+
 @interface GHWLaunchManager ()
+
+
 @end
 
 @implementation GHWLaunchManager
@@ -101,25 +182,38 @@ void GHWExecuteFunction(char *key, char *appName) {
 }
 
 - (void)executeArrayForKey:(NSString *)key {
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
-    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
-    
-    NSString *fKey = [NSString stringWithFormat:@"__%@", key?:@""];
-    
 //    NSDate *date1 = [NSDate date];
-    GHWExecuteFunction((char *)[fKey UTF8String], (char *)[fullAppName UTF8String]);
+//    GHWExecuteFunction((char *)[fKey UTF8String], (char *)[fullAppName UTF8String]);
 //    NSDate *date2 = [NSDate date];
 //    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
 //    NSLog(@"%@ 个动态库，遍历时间 timeInterval = %@", @(_dyld_image_count()), @(interval));
+    
+    if (!self.moduleDic) {
+        return;
+    }
+    
+    NSMutableArray *array = [self.moduleDic objectForKey:key];
+    if (!array.count) {
+        return;
+    }
+    
+    [array sortUsingComparator:^NSComparisonResult(GHWModuleMetaDataModel * _Nonnull obj1, GHWModuleMetaDataModel * _Nonnull obj2) {
+        return obj1.priority < obj2.priority;
+    }];
+
+    for (NSInteger i = 0; i < [array count]; i++) {
+        GHWModuleMetaDataModel *model = array[i];
+        IMP imp = model.imp;
+        void (*func)(void) = (void *)imp;
+        func();
+    }
 }
 
-- (void)testFail {
-    NSArray *array = @[@"1"];
-    NSLog(@"test = %@", array[2]);
-}
-
-- (void)testSuccess {
-    NSLog(@"success");
+- (NSMutableDictionary *)moduleDic {
+    if (!_moduleDic) {
+        _moduleDic = [[NSMutableDictionary alloc] init];
+    }
+    return _moduleDic;
 }
 
 @end
