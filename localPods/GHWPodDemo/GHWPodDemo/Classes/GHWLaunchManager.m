@@ -1,11 +1,8 @@
 #import "GHWLaunchManager.h"
 
 #import <dlfcn.h>
-#import <objc/runtime.h>
-
 #import <mach-o/dyld.h>
 #import <mach-o/getsect.h>
-#import <mach-o/ldsyms.h>
 
 #ifdef __LP64__
 typedef uint64_t GHWExportValue;
@@ -69,9 +66,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
             [result addObject:metaData];
         }
     }
-    
     return [result mutableCopy];
-
 }
 
 
