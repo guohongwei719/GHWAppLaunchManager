@@ -15,37 +15,23 @@
 
 @implementation ViewController
 
-#pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configViews];
-    [self configData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [[GHWLaunchManager sharedInstance] executeArrayForKey:@"Stage_A"];
+    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStageA];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [[GHWLaunchManager sharedInstance] executeArrayForKey:@"Stage_B"];
+    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStageB];
     
 }
-#pragma mark - Setup View / Data
-
-- (void)configViews {
-
-}
-
-- (void)configData {
-
-}
-
-
 
 
 
