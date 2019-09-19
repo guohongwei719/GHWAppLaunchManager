@@ -146,23 +146,7 @@ __attribute__((constructor))
 void premain() {
     NSLog(@"\n\n------------------------  Pre_main start ------------------------\n\n");
 
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
-    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
-    
-    NSString *preMainKey = [NSString stringWithFormat:@"__%@", kGHWLauncherStagePreMain];
-    NSMutableArray *arrayPreMain = modulesInDyld((char *)[preMainKey UTF8String], (char *)[fullAppName UTF8String]);
-    
-    [[GHWLaunchManager sharedInstance].moduleDic setObject:arrayPreMain forKey:kGHWLauncherStagePreMain];
     [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
-    
-    NSString *stageAKey = [NSString stringWithFormat:@"__%@", kGHWLauncherStageA];
-    NSMutableArray *arrayStageA = modulesInDyld((char *)[stageAKey UTF8String], (char *)[fullAppName UTF8String]);
-    [[GHWLaunchManager sharedInstance].moduleDic setObject:arrayStageA forKey:kGHWLauncherStageA];
-    
-    NSString *stageBKey = [NSString stringWithFormat:@"__%@", kGHWLauncherStageB];
-    NSMutableArray *arrayStageB = modulesInDyld((char *)[stageBKey UTF8String], (char *)[fullAppName UTF8String]);
-    [[GHWLaunchManager sharedInstance].moduleDic setObject:arrayStageB forKey:kGHWLauncherStageB];
-    
 }
 
 @interface GHWLaunchManager ()
@@ -188,21 +172,21 @@ void premain() {
 //    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
 //    NSLog(@"%@ 个动态库，遍历时间 timeInterval = %@", @(_dyld_image_count()), @(interval));
     
-    if (!self.moduleDic) {
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
+    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
+    
+    NSString *sectionKey = [NSString stringWithFormat:@"__%@", key];
+    NSMutableArray *arrayModule = modulesInDyld((char *)[sectionKey UTF8String], (char *)[fullAppName UTF8String]);
+    
+
+    if (!arrayModule.count) {
         return;
     }
-    
-    NSMutableArray *array = [self.moduleDic objectForKey:key];
-    if (!array.count) {
-        return;
-    }
-    
-    [array sortUsingComparator:^NSComparisonResult(GHWModuleMetaDataModel * _Nonnull obj1, GHWModuleMetaDataModel * _Nonnull obj2) {
+    [arrayModule sortUsingComparator:^NSComparisonResult(GHWModuleMetaDataModel * _Nonnull obj1, GHWModuleMetaDataModel * _Nonnull obj2) {
         return obj1.priority < obj2.priority;
     }];
-
-    for (NSInteger i = 0; i < [array count]; i++) {
-        GHWModuleMetaDataModel *model = array[i];
+    for (NSInteger i = 0; i < [arrayModule count]; i++) {
+        GHWModuleMetaDataModel *model = arrayModule[i];
         IMP imp = model.imp;
         void (*func)(void) = (void *)imp;
         func();

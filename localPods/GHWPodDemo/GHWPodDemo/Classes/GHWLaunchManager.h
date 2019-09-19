@@ -12,9 +12,6 @@ struct GHW_Function {
 #define kGHWLauncherStageA @"Stage_A"
 #define kGHWLauncherStageB @"Stage_B"
 
-#define kGHWLauncherStagePreMainSimple Pre_main
-#define kGHWLauncherStageASimple Stage_A
-#define kGHWLauncherStageBSimple Stage_B
 
 #define kGHWLauncherPriorityHigh LONG_MAX
 #define kGHWLauncherPriorityDefault 0
