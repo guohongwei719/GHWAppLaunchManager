@@ -77,8 +77,6 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
 
 __attribute__((constructor))
 void premain() {
-    NSLog(@"\n\n------------------------  Pre_main start ------------------------\n\n");
-
     [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
 }
 
@@ -99,9 +97,20 @@ void premain() {
 }
 
 - (void)executeArrayForKey:(NSString *)key {
+    
+    if ([key isEqualToString:kGHWLauncherStagePreMain]) {
+        NSLog(@"\n\n------------------------  Pre_main start ------------------------\n\n");
+
+    } else if ([key isEqualToString:kGHWLauncherStageA]) {
+        NSLog(@"\n\n------------------------  Stage_A start ------------------------\n\n");
+
+    } else if ([key isEqualToString:kGHWLauncherStageB]) {
+        NSLog(@"\n\n------------------------  Stage_B start ------------------------\n\n");
+
+    }
+    
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
     NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
-    
     NSString *sectionKey = [NSString stringWithFormat:@"__%@", key];
     NSMutableArray *arrayModule = modulesInDyld((char *)[sectionKey UTF8String], (char *)[fullAppName UTF8String]);
     

@@ -26,25 +26,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-//    NSDate *date1 = [NSDate date];
-    NSLog(@"\n\n------------------------  Stage_A start ------------------------\n\n");
     [[GHWLaunchManager sharedInstance] executeArrayForKey:@"Stage_A"];
-//    NSDate *date2 = [NSDate date];
-//    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
-//    NSLog(@"stage_a timeInterval = %@", @(interval));
-//    NSLog(@"stage_a timeInterval = %@", @(interval));
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    NSDate *date1 = [NSDate date];
-    NSLog(@"\n\n------------------------  Stage_B start ------------------------\n\n");
     [[GHWLaunchManager sharedInstance] executeArrayForKey:@"Stage_B"];
-//    NSDate *date2 = [NSDate date];
-//    NSTimeInterval interval = [date2 timeIntervalSinceDate:date1];
-//    NSLog(@"stage_b timeInterval = %@", @(interval));
-//    NSLog(@"stage_b timeInterval = %@", @(interval));
     
 }
 #pragma mark - Setup View / Data
