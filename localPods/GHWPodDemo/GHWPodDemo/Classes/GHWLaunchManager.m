@@ -27,12 +27,7 @@ typedef struct section GHWExportSection;
 @end
 
 @implementation GHWModuleMetaDataModel
-
-
 @end
-
-
-
 
 static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char *appName) {
     NSMutableArray<GHWModuleMetaDataModel *> * result = [[NSMutableArray alloc] init];
@@ -68,7 +63,6 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
     }
     return [result mutableCopy];
 }
-
 
 __attribute__((constructor))
 void premain() {

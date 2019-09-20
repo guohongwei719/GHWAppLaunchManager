@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <GHWPodDemo/GHWLaunchManager.h>
 
 @interface ViewController ()
 
@@ -22,14 +21,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStageA];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStageB];
     
 }
 
