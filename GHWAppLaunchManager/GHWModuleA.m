@@ -11,9 +11,9 @@
 
 @implementation GHWModuleA
 
-GHW_FUNCTION_EXPORT(Pre_main, kGHWLauncherPriorityLow)() {
-    printf("ModuleA:Pre_main\n");
-}
+//GHW_FUNCTION_EXPORT(Pre_main, kGHWLauncherPriorityLow)() {
+//    printf("ModuleA:Pre_main\n");
+//}
 
 GHW_FUNCTION_EXPORT(Stage_A, kGHWLauncherPriorityHigh)() {
     printf("ModuleA:Stage_A\n");
