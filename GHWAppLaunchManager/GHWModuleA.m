@@ -19,10 +19,8 @@ GHW_FUNCTION_EXPORT(Stage_A, kGHWLauncherPriorityHigh)() {
     printf("ModuleA:Stage_A\n");
 }
 
-
-
 //static void _GHWStage_A(void); \
-//__attribute__((used, section("__GHW,__Stage_A"))) \
+//__attribute__((used, section("__DATA,__Stage_A"))) \
 //static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("Stage_A")), (void *)(&_GHWStage_A)}; \
 //static void _GHWStage_A () {
 //    printf("ModuleA:Stage_A\n");

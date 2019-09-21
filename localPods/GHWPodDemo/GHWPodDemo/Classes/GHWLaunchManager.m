@@ -16,12 +16,10 @@ typedef struct section GHWExportSection;
 
 #pragma mark -
 
-
-
 @interface GHWModuleMetaDataModel : NSObject
 
 @property (nonatomic, assign) NSInteger priority;
-@property (nonatomic, strong) NSString *info;
+@property (nonatomic, strong) NSString *stage;
 @property (nonatomic, assign) IMP imp;
 
 @end
@@ -29,13 +27,17 @@ typedef struct section GHWExportSection;
 @implementation GHWModuleMetaDataModel
 @end
 
-static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char *appName) {
+static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
+    NSString *appName1 = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
+    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName1];
+    char *fullAppNameC = (char *)[fullAppName UTF8String];
+    
     NSMutableArray<GHWModuleMetaDataModel *> * result = [[NSMutableArray alloc] init];
 
     int num = _dyld_image_count();
     for (int i = 0; i < num; i++) {
         const char *name = _dyld_get_image_name(i);
-        if (strstr(name, appName) == NULL) {
+        if (strstr(name, fullAppNameC) == NULL) {
             continue;
         }
         
@@ -46,7 +48,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
         dladdr(header, &info);
         
         const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
-        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
+        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__DATA", "__launch");
         if (section == NULL) continue;
         int addrOffset = sizeof(struct GHW_Function);
         for (GHWExportValue addr = section->offset;
@@ -57,7 +59,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
             GHWModuleMetaDataModel * metaData = [[GHWModuleMetaDataModel alloc] init];
             metaData.priority = entry.priority;
             metaData.imp = entry.function;
-            metaData.info = [NSString stringWithCString:entry.key encoding:NSUTF8StringEncoding];
+            metaData.stage = [NSString stringWithCString:entry.stage encoding:NSUTF8StringEncoding];
             [result addObject:metaData];
         }
     }
@@ -66,7 +68,11 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
 
 __attribute__((constructor))
 void premain() {
+    
+    
     [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
+    
+    
 }
 
 @interface GHWLaunchManager ()
@@ -98,18 +104,29 @@ void premain() {
 
     }
     
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
-    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
-    NSString *sectionKey = [NSString stringWithFormat:@"__%@", key];
-    NSMutableArray *arrayModule = modulesInDyld((char *)[sectionKey UTF8String], (char *)[fullAppName UTF8String]);
-    
-
-    if (!arrayModule.count) {
-        return;
+    NSMutableArray *arrayModule;
+    if (![self.moduleDic count]) {
+        arrayModule = modulesInDyld();
+        if (!arrayModule.count) {
+            return;
+        }
+        [arrayModule sortUsingComparator:^NSComparisonResult(GHWModuleMetaDataModel * _Nonnull obj1, GHWModuleMetaDataModel * _Nonnull obj2) {
+            return obj1.priority < obj2.priority;
+        }];
+        for (NSInteger i = 0; i < [arrayModule count]; i++) {
+            GHWModuleMetaDataModel *model = arrayModule[i];
+            if (self.moduleDic[model.stage]) {
+                NSMutableArray *stageArray = self.moduleDic[model.stage];
+                [stageArray addObject:model];
+            } else {
+                NSMutableArray *stageArray = [NSMutableArray array];
+                [stageArray addObject:model];
+                self.moduleDic[model.stage] = stageArray;
+            }
+        }
     }
-    [arrayModule sortUsingComparator:^NSComparisonResult(GHWModuleMetaDataModel * _Nonnull obj1, GHWModuleMetaDataModel * _Nonnull obj2) {
-        return obj1.priority < obj2.priority;
-    }];
+    arrayModule = self.moduleDic[key];
+
     for (NSInteger i = 0; i < [arrayModule count]; i++) {
         GHWModuleMetaDataModel *model = arrayModule[i];
         IMP imp = model.imp;
@@ -148,7 +165,7 @@ void premain() {
 //        dladdr(header, &info);
 //
 //        const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
-//        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
+//        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__DATA", key);
 //        if (section == NULL) continue;
 //        int addrOffset = sizeof(struct GHW_Function);
 //        for (GHWExportValue addr = section->offset;
@@ -172,7 +189,7 @@ void premain() {
 ////    dladdr((const void *)&GHWExecuteFunction, &info);
 ////
 ////    const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
-////    const GHWExportSection *section = GHWGetSectByNameFromHeader((void *)dliFbase, "__GHW", key);
+////    const GHWExportSection *section = GHWGetSectByNameFromHeader((void *)dliFbase, "__DATA", key);
 ////    if (section == NULL) return;
 ////
 ////    int addrOffset = sizeof(struct GHW_Function);

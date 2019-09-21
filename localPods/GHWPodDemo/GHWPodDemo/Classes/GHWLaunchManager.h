@@ -1,10 +1,10 @@
 
 #import <Foundation/Foundation.h>
 
-#pragma mark - 实现存储方法
+#pragma mark - 存储的结构体
 struct GHW_Function {
+    char *stage;
     long priority;
-    char *key;
     void (*function)(void);
 };
 
@@ -19,18 +19,15 @@ struct GHW_Function {
 
 #define GHW_FUNCTION_EXPORT(key, _priority_) \
 static void _GHW##key(void); \
-__attribute__((used, section("__GHW,__"#key""))) \
-static const struct GHW_Function __F##key = (struct GHW_Function){_priority_, (char *)(&#key), (void *)(&_GHW##key)}; \
+__attribute__((used, section("__DATA,__launch"))) \
+static const struct GHW_Function __F##key = (struct GHW_Function){(char *)(&#key), _priority_, (void *)(&_GHW##key)}; \
 static void _GHW##key \
 
 @interface GHWLaunchManager : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *moduleDic;
 
-
 + (instancetype)sharedInstance;
-
-/// 执行注册为key的function
 - (void)executeArrayForKey:(NSString *)key;
 
 @end
