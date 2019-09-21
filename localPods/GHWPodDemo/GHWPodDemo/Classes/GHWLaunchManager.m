@@ -28,8 +28,8 @@ typedef struct section GHWExportSection;
 @end
 
 static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
-    NSString *appName1 = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
-    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName1];
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
+    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
     char *fullAppNameC = (char *)[fullAppName UTF8String];
     
     NSMutableArray<GHWModuleMetaDataModel *> * result = [[NSMutableArray alloc] init];
