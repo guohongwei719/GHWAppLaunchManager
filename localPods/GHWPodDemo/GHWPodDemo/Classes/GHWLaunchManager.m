@@ -68,11 +68,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
 
 __attribute__((constructor))
 void premain() {
-    
-    
     [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
-    
-    
 }
 
 @interface GHWLaunchManager ()
