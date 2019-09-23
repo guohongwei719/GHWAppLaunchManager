@@ -66,9 +66,17 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
     return [result mutableCopy];
 }
 
+static void dyld_callback(const struct mach_header * mhp, intptr_t slide) {
+}
+
 __attribute__((constructor))
 void premain() {
     [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
+    
+    
+    //读出的时候还可以这样，这个函数是用来注册回调，当dyld链接符号时，调用此回调函数。在dyld加载镜像时，会执行注册过的回调函数
+//    _dyld_register_func_for_add_image(dyld_callback);
+
 }
 
 @interface GHWLaunchManager ()
