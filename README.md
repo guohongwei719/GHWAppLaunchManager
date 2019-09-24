@@ -275,7 +275,40 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
 }
 ```
 
-读取我们自定义的 __launch 节的数据，将启动项相关 C 结构体数据转为对应 OC 的数据模型，放到一个数组里面。
+第一次读取我们自定义的 __launch 节的数据，将启动项相关 C 结构体数据转为对应 OC 的数据模型，放到一个数组里面。然后将数组转化为一个字典，key 为启动相关阶段，obj 为该阶段所有启动项数据模型。后面再执行的时候直接去字典里面根据对应阶段获取所有启动项数组。代码如下
+
+```
+    NSMutableArray *arrayModule;
+    if (![self.moduleDic count]) {
+        arrayModule = modulesInDyld();
+        if (!arrayModule.count) {
+            return;
+        }
+        [arrayModule sortUsingComparator:^NSComparisonResult(GHWModuleMetaDataModel * _Nonnull obj1, GHWModuleMetaDataModel * _Nonnull obj2) {
+            return obj1.priority < obj2.priority;
+        }];
+        for (NSInteger i = 0; i < [arrayModule count]; i++) {
+            GHWModuleMetaDataModel *model = arrayModule[i];
+            if (self.moduleDic[model.stage]) {
+                NSMutableArray *stageArray = self.moduleDic[model.stage];
+                [stageArray addObject:model];
+            } else {
+                NSMutableArray *stageArray = [NSMutableArray array];
+                [stageArray addObject:model];
+                self.moduleDic[model.stage] = stageArray;
+            }
+        }
+    }
+    arrayModule = self.moduleDic[key];
+
+    for (NSInteger i = 0; i < [arrayModule count]; i++) {
+        GHWModuleMetaDataModel *model = arrayModule[i];
+        IMP imp = model.imp;
+        void (*func)(void) = (void *)imp;
+        func();
+    }
+
+```
 
 ### 五. 总结
 
