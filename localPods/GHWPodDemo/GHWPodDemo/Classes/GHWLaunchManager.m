@@ -71,7 +71,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
             [result addObject:metaData];
         }
     }
-    return [result mutableCopy];
+    return result;
 }
 
 static void dyld_callback(const struct mach_header * mhp, intptr_t slide) {

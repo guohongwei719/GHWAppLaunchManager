@@ -27,6 +27,8 @@ GHW_FUNCTION_EXPORT(Stage_A, kGHWLauncherPriorityHigh)() {
 //    printf("ModuleA:Stage_A\n");
 //}
 
+
+
 GHW_FUNCTION_EXPORT(Stage_B, kGHWLauncherPriorityLow)() {
     printf("ModuleA:Stage_B\n");
     [[GHWModuleA sharedInstance] initMudule];
