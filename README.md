@@ -11,7 +11,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[二. 基本思想](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BA%8C-%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3)  
 &nbsp;&nbsp;&nbsp;&nbsp;[三. 技术原理](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%B8%89-%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86)  
 &nbsp;&nbsp;&nbsp;&nbsp;[四. 技术实现](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%9B%9B-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1. attribute](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%9B%9B-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1. \_\_attribute\_\_](https://github.com/guohongwei719/GHWAppLaunchManager#1-__attribute__)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2. 编译期写入数据](https://github.com/guohongwei719/GHWAppLaunchManager#2-%E7%BC%96%E8%AF%91%E6%9C%9F%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3. 运行时读出数据](https://github.com/guohongwei719/GHWAppLaunchManager#3-%E8%BF%90%E8%A1%8C%E6%97%B6%E8%AF%BB%E5%87%BA%E6%95%B0%E6%8D%AE)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4. 读出数据要注意的地方（use_frameworks!）](https://github.com/guohongwei719/GHWAppLaunchManager#4-%E8%AF%BB%E5%87%BA%E6%95%B0%E6%8D%AE%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9use_frameworks)  
