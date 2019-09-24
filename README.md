@@ -104,15 +104,17 @@ constructor 和 +load 都是在 main 函数执行前调用，但 +load 比 const
 
 #### 2. 编译期写入数据
 
-首先我们定义函数存储的结构体，如下，function 是函数指针，指向我们要写入的函数，key 为附带的信息，后期可以扩展，比如执行优先级，优先级高的函数优先执行。结构体中还可以增加其他字段，比如类名方法名之类，调试的时候可以查看有哪些组件和方法有写入。
+首先我们定义函数存储的结构体，如下，function 是函数指针，指向我们要写入的函数，stage 为启动项执行的阶段，priority 为执行优先级，优先级高的启动项优先执行。结构体中还可以增加其他字段，比如类名方法名之类，调试的时候可以查看有哪些组件和方法有写入。
+
 
 ```
 struct GHW_Function {
-    char *key;
+    char *stage;
+    long priority;
     void (*function)(void);
 };
 ```
-定义函数 GHWStage_A ，里面是需要在 Stage_A 阶段要执行的任务。
+定义函数 \_GHWStage\_A ，里面是需要在 Stage\_A 阶段要执行的任务。
 
 ```
 static void _GHWStage_A () {
@@ -121,11 +123,11 @@ static void _GHWStage_A () {
 }
 ```
 
-将包含函数指针的结构体写入到我们指定的数据区指定的段 __GHW, 指定的节 ___Stage_A，方法如下
+将包含函数指针的结构体写入到我们指定的数据区指定的段 \_\_DATA, 指定的节 \_\_launch，方法如下
 
 ```
-__attribute__((used, section("__GHW,__Stage_A"))) \
-static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("Stage_A")), (void *)(&_GHWStage_A)}; \
+__attribute__((used, section("__DATA,__launch"))) \
+static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("Stage_A")),  _priority_  , (void *)(&_GHWStage_A)}; \
 ```
 
 上面步骤看起来很烦，而且代码晦涩难懂，所以要使用宏来定义一下，如下
@@ -133,18 +135,19 @@ static const struct GHW_Function __FStage_A = (struct GHW_Function){(char *)(&("
 ```
 #define GHW_FUNCTION_EXPORT(key) \
 static void _GHW##key(void); \
-__attribute__((used, section("__GHW,__"#key""))) \
-static const struct GHW_Function __F##key = (struct GHW_Function){(char *)(&#key), (void *)(&_GHW##key)}; \
+__attribute__((used, section("__DATA,__launch"))) \
+static const struct GHW_Function __F##key = (struct GHW_Function){(char *)(&#key), _priority_,  (void *)(&_GHW##key)}; \
 static void _GHW##key \
 ```
 
-然后我们将函数写入数据区方式变得很简单了，还是上面的代码，写入指定的段 __GHW, 指定的节 ___Stage_A，方法如下
+然后我们将函数写入数据区方式变得很简单了，还是上面的代码，写入指定的段和节，方法如下
 
 ```
-GHW_FUNCTION_EXPORT(Stage_A)() {
-    printf("ModuleA:Stage_A");
+GHW_FUNCTION_EXPORT(Stage_A, kGHWLauncherPriorityHigh)() {
+    printf("ModuleA:Stage_A\n");
 }
 ```
+
 现在可以非常方便简单了。
 
 将工程打包，然后用 MachOView 打开 Mach-O 文件，可以看出数据写入到相关数据区了，如下
@@ -155,7 +158,7 @@ GHW_FUNCTION_EXPORT(Stage_A)() {
 
 启动项也需要根据所完成的任务被分类，有些启动项是需要刚启动就执行的操作，如 Crash 监控、统计上报等，否则会导致信息收集的缺失；有些启动项需要在较早的时间节点完成，例如一些提供用户信息的 SDK、定位功能的初始化、网络初始化等；有些启动项则可以被延迟执行，如一些自定义配置，一些业务服务的调用、支付 SDK、地图 SDK 等。我们所做的分阶段启动，首先就是把启动流程合理地划分为若干个启动阶段，然后依据每个启动项所做的事情的优先级把它们分配到相应的启动阶段，优先级高的放在靠前的阶段，优先级低的放在靠后的阶段。
 
-如果要覆盖到 main 之前的阶段，之前我们是使用 load 方法，现在使用 ____attribute____ 的 constructor 属性也可以实现这个效果，而且更方便，优势如下
+如果要覆盖到 main 之前的阶段，之前我们是使用 load 方法，现在使用 \_\_attribute\_\_ 的 constructor 属性也可以实现这个效果，而且更方便，优势如下
 
 - 所有 Class 都已经加载完成
 - 不用像 load 还得挂在在一个 Class 中
@@ -165,7 +168,7 @@ GHW_FUNCTION_EXPORT(Stage_A)() {
 ```
 __attribute__((constructor))
 void premain() {
-    [[GHWExport sharedInstance] executeArrayForKey:@"pre_main"];
+    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStagePreMain];
 }
 ```
 
@@ -174,14 +177,23 @@ app willFinish 和 didFinish 阶段也可以执行相关代码，如下
 
 ```
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[GHWExport sharedInstance] executeArrayForKey:@"Stage_A"];
+    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStageA];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [GHWExport.sharedInstance executeArrayForKey:@"Stage_B"];
+    [[GHWLaunchManager sharedInstance] executeArrayForKey:kGHWLauncherStageB];
+    return YES;
 }
 ```
+
+读出数据有两种方式：  
+
+- 可以使用 _dyld_register_func_for_add_image 函数，这个函数是用来注册回调，在 dyld 加载镜像时，会执行注册过的回调函数，获取到每个镜像的 mach_header 然后读出数据；  
+- 镜像加载完后遍历每个镜像；
+
+本方案里面采用的第二种方式。
+
 
 #### 4. 读出数据要注意的地方（use_frameworks!）
 
@@ -227,24 +239,24 @@ app willFinish 和 didFinish 阶段也可以执行相关代码，如下
 可见过滤情况下遍历一次所有动态库不到一毫秒，完全可以接受。因此如果 Podfile 中开启了 use_frameworks! ，使用动态库集成方式，那么读取 section 数据具体代码如下
 
 ```
-static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char *appName) {
+static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
+    NSString *fullAppName = [NSString stringWithFormat:@"/%@.app/", appName];
+    char *fullAppNameC = (char *)[fullAppName UTF8String];
     NSMutableArray<GHWModuleMetaDataModel *> * result = [[NSMutableArray alloc] init];
-
     int num = _dyld_image_count();
     for (int i = 0; i < num; i++) {
         const char *name = _dyld_get_image_name(i);
-        if (strstr(name, appName) == NULL) {
+        if (strstr(name, fullAppNameC) == NULL) {
             continue;
         }
-        
         const struct mach_header *header = _dyld_get_image_header(i);
         //        printf("%d name: %s\n", i, name);
         
         Dl_info info;
         dladdr(header, &info);
-        
         const GHWExportValue dliFbase = (GHWExportValue)info.dli_fbase;
-        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__GHW", key);
+        const GHWExportSection *section = GHWGetSectByNameFromHeader(header, "__DATA", "__launch");
         if (section == NULL) continue;
         int addrOffset = sizeof(struct GHW_Function);
         for (GHWExportValue addr = section->offset;
@@ -255,14 +267,15 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld(char *key, char 
             GHWModuleMetaDataModel * metaData = [[GHWModuleMetaDataModel alloc] init];
             metaData.priority = entry.priority;
             metaData.imp = entry.function;
-            metaData.info = [NSString stringWithCString:entry.key encoding:NSUTF8StringEncoding];
+            metaData.stage = [NSString stringWithCString:entry.stage encoding:NSUTF8StringEncoding];
             [result addObject:metaData];
         }
     }
-    return [result mutableCopy];
+    return result;
 }
-
 ```
+
+读取我们自定义的 __launch 节的数据，将启动项相关 C 结构体数据转为对应 OC 的数据模型，放到一个数组里面。
 
 ### 五. 总结
 
