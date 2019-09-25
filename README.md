@@ -342,6 +342,13 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
 
 后者依赖前者的基础基础才能得以实现，可以简单理解为一种快速写入和读取配置表的类似技术。
 
+## 参考文章
+
+[iOS App冷启动治理：来自美团外卖的实践](https://mp.weixin.qq.com/s/jN3jaNrvXczZoYIRCWZs7w)  
+[\_\_attribute\_\_详解及应用](https://www.jianshu.com/p/965f6f903114)  
+[一种延迟 premain code 的方法](https://everettjf.github.io/2017/03/06/a-method-of-delay-premain-code/)  
+[聊聊AppDelegate解耦](https://mp.weixin.qq.com/s/-RyljgDfchMY3KoEzeEYOg)
+
 ## 后记
 
 欢迎提一起探讨技术问题，觉得可以给我点个 star，谢谢。  
