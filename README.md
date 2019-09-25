@@ -16,6 +16,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3. 运行时读出数据](https://github.com/guohongwei719/GHWAppLaunchManager#3-%E8%BF%90%E8%A1%8C%E6%97%B6%E8%AF%BB%E5%87%BA%E6%95%B0%E6%8D%AE)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4. 读出数据要注意的地方（use_frameworks!）](https://github.com/guohongwei719/GHWAppLaunchManager#4-%E8%AF%BB%E5%87%BA%E6%95%B0%E6%8D%AE%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9use_frameworks)  
 &nbsp;&nbsp;&nbsp;&nbsp;[五. 总结](https://github.com/guohongwei719/GHWAppLaunchManager#%E4%BA%94-%E6%80%BB%E7%BB%93)  
+[参考文章](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0)  
 [后记](https://github.com/guohongwei719/GHWAppLaunchManager#%E5%90%8E%E8%AE%B0)
 
 ## 前言
