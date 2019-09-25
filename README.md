@@ -292,7 +292,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
 }
 ```
 
-第一次读取我们自定义的 __launch 节的数据，将启动项相关 C 结构体数据转为对应 OC 的数据模型，放到一个数组里面。然后将数组转化为一个字典，key 为启动相关阶段，obj 为该阶段所有启动项数据模型。后面再执行的时候直接去字典里面根据对应阶段获取所有启动项数组。代码如下
+第一次读取我们自定义的 __launch 节的数据，将启动项相关 C 结构体数据转为对应 OC 的数据模型，放到一个数组里面。然后将数组转化为一个字典，key 为启动相关阶段，obj 为该阶段所有启动项数组。后面再执行的时候直接去字典里面根据对应阶段获取所有启动项数组。代码如下
 
 ```
 - (void)executeArrayForKey:(NSString *)key {
