@@ -352,7 +352,7 @@ static NSMutableArray<GHWModuleMetaDataModel *> * modulesInDyld() {
 
 ## 后记
 
-欢迎提一起探讨技术问题，觉得可以给我点个 star，谢谢。  
+欢迎提一起探讨技术问题，觉得有用的话给我点个 star，谢谢。  
 微博：[黑化肥发灰11](https://weibo.com/u/2977255324)   
 简书地址：[https://www.jianshu.com/u/fb5591dbd1bf](https://www.jianshu.com/u/fb5591dbd1bf)  
 掘金地址：[https://juejin.im/user/595b50896fb9a06ba82d14d4](https://juejin.im/user/595b50896fb9a06ba82d14d4)
